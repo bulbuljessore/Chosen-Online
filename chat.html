@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/app.js"></script>
+</head>
+<body>
+<x-dc>
+<div ref="{{ rootRef }}" style="font-family:'Public Sans',sans-serif; color:#1F1724">
+<sc-if value="{{ closed }}" hint-placeholder-val="{{ true }}">
+<div data-m="chat-launch" style="position:fixed; right:24px; bottom:24px; z-index:80; display:flex; align-items:flex-end; gap:12px">
+<sc-if value="{{ tip }}" hint-placeholder-val="{{ false }}"><div data-pop="" style="position:relative; max-width:240px; background:#fff; border:1px solid #EEE8F0; border-radius:18px 18px 6px 18px; padding:14px 34px 14px 16px; box-shadow:0 16px 40px rgba(31,23,36,.18); font-size:14px; line-height:1.45; cursor:pointer" onClick="{{ openChat }}"><b style="font-family:'Urbanist',sans-serif; font-size:16px">Sawubona! I’m Zola.</b><br>Need help finding a job or hiring? Ask me anything.<button onClick="{{ hideTip }}" aria-label="Dismiss" style="position:absolute; right:8px; top:8px; width:24px; height:24px; border:0; border-radius:50%; background:#F5F1F7; color:#6B6070; cursor:pointer; font-size:14px; line-height:1">×</button></div></sc-if>
+<div data-float="6">
+<button onClick="{{ openChat }}" aria-label="Chat with Zola" style="position:relative; width:64px; height:64px; border-radius:50%; border:0; cursor:pointer; background:linear-gradient(135deg,#FF0098,#8B4DFF); box-shadow:0 14px 34px rgba(209,0,124,.4), 0 0 0 4px #fff; display:grid; place-items:center; transition:transform .3s cubic-bezier(.34,1.56,.64,1)" style-hover="transform:scale(1.1) rotate(-8deg)" style-active="transform:scale(.92)">
+<span style="display:flex; flex-direction:column; align-items:center; gap:5px"><span style="display:flex; gap:9px"><span data-eye="" style="width:8px; height:13px; border-radius:99px; background:#fff"></span><span data-eye="" style="width:8px; height:13px; border-radius:99px; background:#fff"></span></span><span style="width:18px; height:8px; border:3px solid #fff; border-top:0; border-radius:0 0 99px 99px"></span></span>
+<sc-if value="{{ tip }}" hint-placeholder-val="{{ false }}"><span style="position:absolute; top:-2px; right:-2px; width:22px; height:22px; border-radius:50%; background:#1F1724; color:#fff; font-size:12px; font-weight:700; display:grid; place-items:center; border:2px solid #fff">1</span></sc-if>
+</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+<div data-m="chat-panel" data-pop="" style="position:fixed; right:24px; bottom:24px; z-index:90; width:392px; height:min(660px, calc(100vh - 48px)); background:#fff; border-radius:26px; box-shadow:0 30px 80px rgba(31,23,36,.3); display:flex; flex-direction:column; overflow:hidden; transform-origin:100% 100%">
+<div style="background:radial-gradient(300px 140px at 90% 0%, rgba(255,0,152,.35), transparent 70%), #1F1724; color:#fff; padding:16px 14px 16px 18px; display:flex; align-items:center; gap:12px; flex:none">
+<span style="position:relative; width:44px; height:44px; flex:none; border-radius:50%; background:linear-gradient(135deg,#FF0098,#8B4DFF); display:grid; place-items:center"><span style="display:flex; flex-direction:column; align-items:center; gap:3px"><span style="display:flex; gap:6px"><span data-eye="" style="width:6px; height:9px; border-radius:99px; background:#fff"></span><span data-eye="" style="width:6px; height:9px; border-radius:99px; background:#fff"></span></span><span style="width:12px; height:6px; border:2px solid #fff; border-top:0; border-radius:0 0 99px 99px"></span></span><span style="position:absolute; right:0; bottom:0; width:11px; height:11px; border-radius:50%; background:#3DDC97; border:2px solid #1F1724"></span></span>
+<div style="flex:1; min-width:0; display:flex; flex-direction:column"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:19px">Zola</span><span style="font-size:13px; color:#CFC6D2">CHOSEN helper · replies instantly</span></div>
+<button onClick="{{ toggleMute }}" aria-label="{{ muteLabel }}" title="{{ muteLabel }}" style="width:36px; height:36px; border-radius:50%; border:0; background:rgba(255,255,255,.08); color:#fff; cursor:pointer; display:grid; place-items:center; transition:background .2s" style-hover="background:rgba(255,255,255,.18)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"></path><path d="{{ muteIcon }}"></path></svg></button>
+<button onClick="{{ restart }}" aria-label="Start over" title="Start over" style="width:36px; height:36px; border-radius:50%; border:0; background:rgba(255,255,255,.08); color:#fff; cursor:pointer; display:grid; place-items:center; transition:background .2s, transform .4s" style-hover="background:rgba(255,255,255,.18); transform:rotate(-180deg)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7 M3 4v5h5"></path></svg></button>
+<button onClick="{{ closeChat }}" aria-label="Close chat" style="width:36px; height:36px; border-radius:50%; border:0; background:rgba(255,255,255,.08); color:#fff; cursor:pointer; display:grid; place-items:center; font-size:20px; transition:background .2s, transform .25s" style-hover="background:rgba(255,255,255,.18); transform:rotate(90deg)">×</button>
+</div>
+<div data-m="chat-list" style="flex:1; min-height:0; overflow-y:auto; background:#FAF8FB; padding:18px 14px; display:flex; flex-direction:column; gap:10px">
+<sc-for list="{{ msgs }}" as="m" hint-placeholder-count="2">
+<sc-if value="{{ m.bot }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex; gap:8px; align-items:flex-end; max-width:92%">
+<span style="width:28px; height:28px; flex:none; border-radius:50%; background:linear-gradient(135deg,#FF0098,#8B4DFF); display:grid; place-items:center"><span style="display:flex; gap:4px"><span data-eye="" style="width:4px; height:6px; border-radius:99px; background:#fff"></span><span data-eye="" style="width:4px; height:6px; border-radius:99px; background:#fff"></span></span></span>
+<div style="display:flex; flex-direction:column; gap:8px; min-width:0">
+<div data-pop="" style="background:#fff; border:1px solid #EEE8F0; border-radius:18px 18px 18px 6px; padding:11px 14px; font-size:15px; line-height:1.5; white-space:pre-line; transform-origin:0 100%">{{ m.text }}</div>
+<sc-if value="{{ m.hasJobs }}" hint-placeholder-val="{{ false }}"><div style="display:flex; flex-direction:column; gap:6px">
+<sc-for list="{{ m.jobs }}" as="j" hint-placeholder-count="2"><a href="job.html" style="display:flex; gap:10px; align-items:center; background:#fff; border:1px solid #EEE8F0; border-radius:14px; padding:10px 12px; color:#1F1724; transition:border-color .2s, transform .25s cubic-bezier(.2,.7,.2,1)" style-hover="border-color:#FF0098; transform:translateX(4px); color:#1F1724">
+<span style="position:relative; overflow:hidden; width:38px; height:38px; flex:none; border-radius:10px; background:#F1EAFF; color:#5B2FBF; display:grid; place-items:center; font-family:'Urbanist',sans-serif; font-weight:700; font-size:13px">{{ j.ini }}<img src="{{ j.logo }}" alt="" onLoad="{{ logoCheck }}" onError="{{ logoHide }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#fff; padding:5px; box-sizing:border-box"></span>
+<span style="flex:1; min-width:0; display:flex; flex-direction:column; gap:1px"><span style="font-weight:600; font-size:14px; line-height:1.3">{{ j.title }}</span><span style="font-size:12px; color:#6B6070; line-height:1.35">{{ j.co }} · {{ j.loc }}</span><span style="font-size:13px; font-weight:600; color:#A8005F; line-height:1.35">{{ j.pay }}</span></span>
+<span style="color:#D1007C; font-weight:700">→</span></a></sc-for>
+</div></sc-if>
+<sc-if value="{{ m.hasLinks }}" hint-placeholder-val="{{ false }}"><div style="display:flex; flex-wrap:wrap; gap:6px"><sc-for list="{{ m.links }}" as="l" hint-placeholder-count="1"><a href="{{ l.href }}" style="font-size:13px; font-weight:600; background:#1F1724; color:#fff; padding:8px 13px; border-radius:999px; transition:background .2s, transform .2s" style-hover="background:#D1007C; color:#fff; transform:translateY(-2px)">{{ l.label }} →</a></sc-for></div></sc-if>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ m.me }}" hint-placeholder-val="{{ false }}"><div data-pop="" style="align-self:flex-end; max-width:80%; background:#D1007C; color:#fff; border-radius:18px 18px 6px 18px; padding:11px 14px; font-size:15px; line-height:1.5; transform-origin:100% 100%">{{ m.text }}</div></sc-if>
+</sc-for>
+<sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}"><div style="display:flex; gap:8px; align-items:flex-end"><span style="width:28px; height:28px; flex:none; border-radius:50%; background:linear-gradient(135deg,#FF0098,#8B4DFF)"></span><div style="background:#fff; border:1px solid #EEE8F0; border-radius:18px 18px 18px 6px; padding:14px 16px; display:flex; gap:5px"><span data-dot="0" style="width:7px; height:7px; border-radius:50%; background:#D1007C"></span><span data-dot="1" style="width:7px; height:7px; border-radius:50%; background:#D1007C"></span><span data-dot="2" style="width:7px; height:7px; border-radius:50%; background:#D1007C"></span></div></div></sc-if>
+</div>
+<sc-if value="{{ hasChips }}" hint-placeholder-val="{{ true }}"><div style="flex:none; display:flex; gap:6px; overflow-x:auto; padding:10px 14px 2px; background:#FAF8FB; scrollbar-width:none">
+<sc-for list="{{ chips }}" as="c" hint-placeholder-count="3"><button onClick="{{ c.pick }}" style="flex:none; border:1px solid #E2D9E6; background:#fff; color:#1F1724; font:500 13px 'Public Sans',sans-serif; padding:8px 13px; border-radius:999px; cursor:pointer; white-space:nowrap; transition:border-color .2s, background .2s, color .2s, transform .2s" style-hover="border-color:#D1007C; background:#D1007C; color:#fff; transform:translateY(-2px)">{{ c.label }}</button></sc-for>
+</div></sc-if>
+<form onSubmit="{{ submit }}" style="flex:none; display:flex; gap:8px; align-items:center; padding:12px 14px; background:#FAF8FB; border-top:1px solid #F1ECF2">
+<input ref="{{ inputRef }}" value="{{ input }}" onChange="{{ setInput }}" placeholder="Ask Zola, e.g. nursing jobs in Durban" aria-label="Message" style="flex:1; min-width:0; font:16px 'Public Sans',sans-serif; padding:13px 16px; border:1px solid #E2D9E6; border-radius:999px; outline:none; background:#fff; color:#1F1724; transition:border-color .2s, box-shadow .2s" style-focus="border-color:#8B4DFF; box-shadow:0 0 0 4px #F1EAFF">
+<button type="submit" aria-label="Send" style="width:46px; height:46px; flex:none; border-radius:50%; border:0; background:#D1007C; color:#fff; cursor:pointer; display:grid; place-items:center; transition:background .2s, transform .2s" style-hover="background:#A8005F; transform:rotate(-12deg) scale(1.06)" style-active="transform:scale(.9)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14 M13 6l6 6-6 6"></path></svg></button>
+</form>
+<span style="flex:none; text-align:center; font-size:11px; color:#8A7F8E; padding:0 14px 10px; background:#FAF8FB">Zola answers from CHOSEN’s own jobs and help pages.</span>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const FAV = { DH: 'dhl.de', MC: 'mediclinic.co.za', TA: 'takealot.com', TY: 'toyota.co.za', SB: 'standardbank.co.za', TS: 'tsogosun.com', VC: 'vodacom.com', PW: 'pwc.co.za', CH: 'checkers.co.za', SR: 'shoprite.co.za' };
+const ROLE_CHIPS = ['I’m looking for work', 'I’m hiring', 'I’m a recruiter'];
+const CHIPS = {
+  seeker: ['Jobs near Joburg', 'Remote jobs', 'Graduate jobs', 'Upload my CV', 'Track my applications'],
+  employer: ['How much to post a job?', 'Post a job', 'How do you verify companies?', 'Talk to a person'],
+  recruiter: ['Search the CV database', 'Recruiter plan price', 'Invite candidates', 'Talk to sales'],
+  none: ROLE_CHIPS
+};
+const LOCS = [
+  { label: 'Gauteng', code: 'GP', keys: ['gauteng', 'gp', 'johannesburg', 'joburg', 'jozi', 'jhb', 'sandton', 'pretoria', 'midrand', 'centurion', 'soweto'] },
+  { label: 'Western Cape', code: 'WC', keys: ['western cape', 'cape town', 'capetown', 'stellenbosch', 'wc'] },
+  { label: 'KwaZulu-Natal', code: 'KZN', keys: ['kwazulu', 'kzn', 'durban', 'umhlanga', 'pietermaritzburg'] },
+  { label: 'Eastern Cape', code: 'EC', keys: ['eastern cape', 'gqeberha', 'port elizabeth', 'east london'] },
+  { label: 'Free State', code: 'FS', keys: ['free state', 'bloemfontein'] },
+  { label: 'Limpopo', code: 'LP', keys: ['limpopo', 'polokwane'] },
+  { label: 'Mpumalanga', code: 'MP', keys: ['mpumalanga', 'mbombela', 'nelspruit'] },
+  { label: 'Northern Cape', code: 'NC', keys: ['northern cape', 'kimberley'] },
+  { label: 'North West', code: 'NW', keys: ['north west', 'rustenburg', 'mahikeng'] }
+];
+const SYN = {
+  it: ['developer', 'devops', 'technician', 'engineer', 'designer'], tech: ['developer', 'devops', 'technician', 'designer'], software: ['developer', 'devops'], developer: ['developer', 'devops'], dev: ['developer', 'devops'], programmer: ['developer'], coding: ['developer'],
+  finance: ['accountant', 'finance', 'bookkeeper', 'payroll'], accounting: ['accountant', 'bookkeeper'], accountant: ['accountant', 'bookkeeper'], bank: ['standard bank'], banking: ['standard bank'],
+  health: ['nurse', 'mediclinic'], healthcare: ['nurse', 'mediclinic'], medical: ['nurse', 'mediclinic'], hospital: ['nurse', 'mediclinic'], nursing: ['nurse'],
+  teaching: ['teacher'], education: ['teacher'], school: ['teacher'], hospitality: ['chef', 'tsogo'], cook: ['chef'], kitchen: ['chef'], hotel: ['tsogo'],
+  admin: ['receptionist', 'administrator', 'payroll'], office: ['receptionist', 'administrator'], logistics: ['warehouse', 'dhl', 'supply'], warehouse: ['warehouse'], driver: ['warehouse', 'dhl'],
+  design: ['designer'], ux: ['designer'], data: ['data', 'analyst'], analyst: ['analyst'], sales: ['sales'], retail: ['shoprite', 'checkers', 'sales'], customer: ['customer', 'call centre'], support: ['support', 'call centre', 'customer'], callcentre: ['call centre']
+};
+const STOP = new Set('i im me my a an the and or for in at on of to with from is are am be any some there what which who how can could would will do does you your please show find get give looking look want need search new latest open available job jobs work working vacancy vacancies hiring role roles position positions career careers near around opportunities opportunity salary salaries pay paying earn earns much per month like that this it’s its about tell know'.split(' '));
+const norm = s => s.toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+const wordIn = (t, k) => new RegExp('(^|\\s)' + k.replace(/[-]/g, '\\-') + '(\\s|$)').test(t);
+
+class Component extends DCLogic {
+  state = { open: false, msgs: [], chips: [], role: null, input: '', typing: false, muted: false, tip: false };
+  rootRef = React.createRef(); listRef = React.createRef(); inputRef = React.createRef();
+
+  componentDidMount() {
+    try { this.muted = localStorage.getItem('zola-muted') === '1'; } catch (e) {}
+    let saved = null; try { saved = JSON.parse(sessionStorage.getItem('zola-chat') || 'null'); } catch (e) {}
+    const wide = window.innerWidth > 760;
+    this.loadData().then(() => {
+      if (saved && saved.msgs && saved.msgs.length) this.setState({ msgs: saved.msgs, chips: saved.chips || [], role: saved.role || null, open: !!saved.open && wide, muted: !!this.muted });
+      else this.setState({ msgs: this.welcome(), chips: ROLE_CHIPS, muted: !!this.muted });
+    });
+    let seen = false; try { seen = sessionStorage.getItem('zola-seen') === '1'; } catch (e) {}
+    if (!seen) {
+      this.t1 = setTimeout(() => { if (this.state.open) return; this.setState({ tip: true }); this.chime(); }, 1200);
+      this.t2 = setTimeout(() => this.setState({ tip: false }), 12000);
+    }
+    this.anim();
+  }
+  componentWillUnmount() { clearTimeout(this.t1); clearTimeout(this.t2); clearTimeout(this.t3); this.cleanUnlock && this.cleanUnlock(); }
+  componentDidUpdate() {
+    try { this.anim(); } catch (e) {}
+    const s = this.state;
+    const k = s.msgs.length + '|' + s.typing + '|' + s.open;
+    if (k !== this._lastKey) { this._lastKey = k; this.toBottom(); }
+    if (s.open && !this._wasOpen && window.innerWidth > 760) setTimeout(() => { const i = document.querySelector('[data-m="chat-panel"] input'); i && i.focus(); }, 250);
+    this._wasOpen = s.open;
+    try {
+      const j = JSON.stringify({ msgs: s.msgs.slice(-40), chips: s.chips, role: s.role, open: s.open });
+      if (j !== this._lastSaved && s.msgs.length) { this._lastSaved = j; sessionStorage.setItem('zola-chat', j); }
+    } catch (e) {}
+  }
+  toBottom() {
+    const go = () => { const l = document.querySelector('[data-m="chat-list"]'); if (l) l.scrollTop = l.scrollHeight; };
+    go(); setTimeout(go, 60); setTimeout(go, 400);
+  }
+  loadData() {
+    if (window.CHOSEN_DATA) return Promise.resolve();
+    return new Promise(res => { const sc = document.createElement('script'); sc.src = 'assets/js/site-data.js'; sc.onload = res; sc.onerror = res; document.head.appendChild(sc); });
+  }
+  welcome() { return [{ from: 'bot', text: 'Sawubona! I’m Zola, your CHOSEN helper.' }, { from: 'bot', text: 'Are you looking for work, hiring, or recruiting? Pick one below, or just type your question.' }]; }
+
+  // ---- sound (Web Audio, no files) ----
+  ac() { if (!this.ctx) { const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null; this.ctx = new AC(); } return this.ctx; }
+  tone(c, f, t0, dur, type, vol, f2) {
+    const o = c.createOscillator(), g = c.createGain(), t = c.currentTime + t0;
+    o.type = type; o.frequency.setValueAtTime(f, t); if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + dur * 0.8);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.015); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + dur + 0.02);
+  }
+  play(kind) {
+    if (this.muted) return; const c = this.ac(); if (!c || c.state !== 'running') return;
+    if (kind === 'hello') {
+      // small soft two-note bell
+      [[1318.5, 0]].forEach(([f, d]) => {
+        const t = c.currentTime + d, g = c.createGain(); g.connect(c.destination);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.09, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.6);
+        [[f, 1], [f * 2.01, 0.25], [f * 3.02, 0.08]].forEach(([fr, v]) => { const o = c.createOscillator(), og = c.createGain(); o.type = 'sine'; o.frequency.value = fr; og.gain.value = v; o.connect(og); og.connect(g); o.start(t); o.stop(t + 0.65); });
+      });
+    }
+    if (kind === 'pop') { this.tone(c, 420, 0, 0.14, 'sine', 0.14, 980); }
+    if (kind === 'blip') { this.tone(c, 1180, 0, 0.09, 'sine', 0.07, 1500); this.tone(c, 1570, 0.06, 0.08, 'sine', 0.05); }
+    if (kind === 'send') {
+      // soft "pook" bubble pop
+      const t = c.currentTime, o = c.createOscillator(), g = c.createGain(), lp = c.createBiquadFilter();
+      o.type = 'sine'; o.frequency.setValueAtTime(260, t); o.frequency.exponentialRampToValueAtTime(820, t + 0.07); o.frequency.exponentialRampToValueAtTime(700, t + 0.14);
+      lp.type = 'lowpass'; lp.frequency.value = 2400;
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.32, t + 0.012); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.16);
+      o.connect(lp); lp.connect(g); g.connect(c.destination); o.start(t); o.stop(t + 0.18);
+    }
+    if (kind === 'close') { this.tone(c, 880, 0, 0.14, 'sine', 0.09, 440); }
+  }
+  chime() {
+    const c = this.ac(); if (!c) return;
+    const go = () => { if (this.chimed || c.state !== 'running') return; this.chimed = true; this.cleanUnlock && this.cleanUnlock(); this.play('hello'); };
+    c.resume().then(go).catch(() => {}); go();
+    if (this.chimed) return;
+    const unlock = () => { if (!this.state.tip) { this.cleanUnlock(); return; } c.resume().then(go).catch(() => {}); };
+    const evs = ['pointerdown', 'keydown', 'touchstart'];
+    evs.forEach(e => window.addEventListener(e, unlock, { passive: true, capture: true }));
+    this.cleanUnlock = () => evs.forEach(e => window.removeEventListener(e, unlock, { capture: true }));
+  }
+  markSeen() { try { sessionStorage.setItem('zola-seen', '1'); } catch (e) {} }
+  anim() {
+    const root = this.rootRef.current; if (!root || !root.animate) return;
+    root.querySelectorAll('[data-eye]').forEach(el => { if (el.__a) return; el.__a = el.animate([{ transform: 'scaleY(1)' }, { transform: 'scaleY(1)', offset: 0.92 }, { transform: 'scaleY(.1)', offset: 0.96 }, { transform: 'scaleY(1)' }], { duration: 4200, iterations: Infinity }); });
+    root.querySelectorAll('[data-dot]').forEach(el => { if (el.__a) return; el.__a = el.animate([{ transform: 'translateY(0)', opacity: 0.35 }, { transform: 'translateY(-5px)', opacity: 1 }, { transform: 'translateY(0)', opacity: 0.35 }], { duration: 900, iterations: Infinity, delay: (+el.getAttribute('data-dot')) * 150 }); });
+  }
+
+  // ---- conversation ----
+  send(raw) {
+    const text = (raw || '').trim(); if (!text || this.state.typing) return;
+    this.play('send');
+    this.setState(s => ({ msgs: [...s.msgs, { from: 'me', text }], input: '', chips: [], typing: true }));
+    const r = this.engine(text);
+    this.t3 = setTimeout(() => {
+      this.setState(s => { const role = r.role || s.role; return { typing: false, role, msgs: [...s.msgs, { from: 'bot', text: r.text, jobs: r.jobs || [], links: r.links || [] }], chips: r.chips || CHIPS[role || 'none'] }; });
+    }, 520 + Math.min(900, r.text.length * 5));
+  }
+  engine(raw) {
+    const D = window.CHOSEN_DATA || { jobs: [], companies: [], pricing: [], faq: [], contact: {} };
+    const t = norm(raw), has = (...w) => w.some(x => t.includes(x)), role = this.state.role;
+    // roles
+    if (has('looking for work', 'job seeker', 'jobseeker', 'looking for a job', 'need a job', 'find a job')) return { role: 'seeker', text: 'Lekker! I can search jobs, help with your CV and track your applications. What kind of job do you want, and where?', chips: CHIPS.seeker };
+    if (has('im hiring', 'i am hiring', 'employer', 'we are hiring', 'were hiring')) return { role: 'employer', text: 'Great, let’s find you good people. I can explain pricing, how posting works and how we verify companies.', chips: CHIPS.employer };
+    if (has('recruiter', 'recruitment agency', 'headhunter')) return { role: 'recruiter', text: 'Welcome! The Recruiter plan lets you search our CV database and invite candidates to apply. What would you like to know?', chips: CHIPS.recruiter };
+    const words = t.split(' ');
+    if (words.length <= 3 && has('hi', 'hello', 'hey', 'sawubona', 'howzit', 'molo', 'dumela', 'hallo', 'good morning', 'good afternoon') && /^(hi|hello|hey|sawubona|howzit|molo|dumela|hallo|good)/.test(t)) return { text: role ? 'Hello again! What can I help you with?' : 'Hello! Are you looking for work, hiring, or recruiting?', chips: CHIPS[role || 'none'] };
+    if (has('thank', 'thanks', 'shot', 'sharp', 'cheers', 'ngiyabonga', 'dankie')) return { text: 'Sharp sharp! Anything else I can help with?' };
+    if (has('bye', 'goodbye', 'later', 'sala kahle')) return { text: 'Hamba kahle! Good luck out there. I’m here whenever you need me.' };
+    if (has('human', 'person', 'agent', 'someone', 'contact', 'phone', 'call you', 'email you', 'support', 'talk to sales', 'sales team') && !has('customer support', 'it support')) {
+      const c = D.contact; return { text: `You can reach our team on ${c.email} or ${c.phone} (${c.hours}). We reply within one working day.`, links: [{ label: 'Contact page', href: 'about.html' }] };
+    }
+    if (has('cv database', 'search candidates', 'find candidates', 'search the cv', 'invite candidates', 'invite', 'headhunt', 'source candidates')) return { role: role || 'recruiter', text: 'With the Recruiter plan (R 3 900 a month) you can search every visible CV on CHOSEN, filter by skills and province, and invite people to apply for your jobs.', links: [{ label: 'See plans', href: 'post-a-job.html' }] };
+    if (has('recruiter plan')) { const p = D.pricing[2]; return { role: role || 'recruiter', text: `${p.name}: ${p.price}. Includes ${p.detail}.`, links: [{ label: 'See plans', href: 'post-a-job.html' }] }; }
+    const isPay = has('salary', 'earn', 'paid', 'paying', 'wage');
+    if ((has('price', 'pricing', 'cost', 'how much', 'plan', 'fee', 'charge')) && !isPay && (role !== 'seeker' || has('post', 'list', 'advert', 'plan'))) {
+      return { role: role || 'employer', text: 'Here’s how pricing works:\n' + D.pricing.map(p => `• ${p.name}: ${p.price}, ${p.detail}`).join('\n') + '\n\nCHOSEN is always free for job seekers.', links: [{ label: 'Post a job', href: 'post-a-job.html' }] };
+    }
+    if (has('post a job', 'post job', 'advertise', 'list a job', 'create a listing', 'new listing', 'post my job', 'posting')) return { role: role || 'employer', text: 'Posting takes about five minutes: add the job details, the salary and location, then review and post. We verify your company within one working day, and most employers get their first applicant within 24 hours.', links: [{ label: 'Post a job', href: 'post-a-job.html' }] };
+    if (has('verify', 'verification', 'verified', 'legit', 'scam', 'fake')) return { text: role === 'seeker' ? 'Every employer on CHOSEN is verified. We check their CIPC registration and business contact details. We never ask job seekers to pay for a job. If something looks off, report it to hello@chosen.co.za.' : 'We check your CIPC registration and confirm a business phone number and email. It usually takes under one working day.' };
+    if (has('alert', 'notify', 'notification', 'email me')) return { text: 'Search for the jobs you want on Find jobs, then tap “Create job alert”. We’ll email new matches every morning, and the app sends them instantly.', links: [{ label: 'Find jobs', href: 'jobs.html' }] };
+    if (has('cv', 'resume', 'curriculum')) {
+      if (has('tip', 'write', 'improve', 'better', 'advice', 'format', 'how long')) return { text: 'Keep it to two pages, lead each role with results, and use the same words as the job ad. Our recruiters wrote a full guide.', links: [{ label: 'Read CV tips', href: 'career-advice.html' }] };
+      return { role: role || 'seeker', text: 'Go to your profile and drag in your CV (PDF or Word, up to 5 MB). We’ll fill in your details from it, and then you can apply to any job with one tap.', links: [{ label: 'Upload CV', href: 'profile.html' }] };
+    }
+    if (has('interview')) return { text: 'Our career advice section has tips on common interview questions South African employers ask. Your upcoming interviews also show in your dashboard.', links: [{ label: 'Career advice', href: 'career-advice.html' }, { label: 'Dashboard', href: 'dashboard.html' }] };
+    if (has('track', 'status', 'my application', 'applications', 'heard back', 'dashboard', 'applied')) return { text: 'Every application has a status: Applied, Viewed, Shortlisted, Interview or Not selected. You’ll find them all in your dashboard, and we email you when one changes.', links: [{ label: 'My dashboard', href: 'dashboard.html' }] };
+    if (has('how to apply', 'how do i apply', 'how can i apply', 'apply')) return { text: 'Open any job and tap “Apply now”. Pick your CV, add a short note if you like, and send. It takes about two minutes.', links: [{ label: 'Find jobs', href: 'jobs.html' }] };
+    if (has('delete', 'privacy', 'popia', 'my data', 'who can see')) { const f = D.faq.filter(([q]) => /delete|see my cv/i.test(q)); return { text: f.map(([q, a]) => a).join('\n\n'), links: [{ label: 'Help centre', href: 'faq.html' }] }; }
+    if (has('free')) return { text: 'Yes, CHOSEN is free for job seekers: profile, CV upload, job alerts and applications. Employers get their first listing free for 30 days.' };
+    // company
+    const co = D.companies.find(c => c.key.some(k => t.includes(k)));
+    const hasJobWord = has('job', 'work', 'vacanc', 'hiring', 'role', 'position', 'opening');
+    if (co && !hasJobWord && !isPay) {
+      const js = D.jobs.filter(j => j.co === co.name);
+      return { text: `${co.name} is a verified ${co.ind.toLowerCase()} employer based in ${co.city}. ${js.length ? `They have ${js.length} open ${js.length === 1 ? 'job' : 'jobs'} on CHOSEN right now:` : 'They have no open jobs right now, but you can follow them for updates.'}`, jobs: js.slice(0, 3), links: [{ label: 'View companies', href: 'companies.html' }] };
+    }
+    if (has('companies', 'employers list', 'which companies', 'who is hiring', 'whos hiring')) return { text: 'Some of the verified employers hiring right now: ' + D.companies.slice(0, 6).map(c => c.name).join(', ') + '.', links: [{ label: 'Browse companies', href: 'companies.html' }] };
+    if (has('about chosen', 'who are you', 'what is chosen', 'what are you')) return { text: 'I’m Zola, CHOSEN’s helper. CHOSEN is a South African job site: every employer is verified, every job shows the salary, and every application has a status you can follow.', links: [{ label: 'About us', href: 'about.html' }] };
+    // job search
+    const r = this.search(t, D);
+    if (r) return r;
+    // faq fallback
+    const toks = words.filter(w => w.length > 3 && !STOP.has(w));
+    let best = null, bs = 0;
+    D.faq.forEach(([q, a]) => { const qn = norm(q), an = norm(a); let sc = 0; toks.forEach(w => { if (qn.includes(w)) sc += 2; else if (an.includes(w)) sc += 1; }); if (sc > bs) { bs = sc; best = [q, a]; } });
+    if (best && bs >= 2) return { text: best[1], links: [{ label: 'More in the help centre', href: 'faq.html' }] };
+    return { text: 'Eish, I’m not sure about that one yet. I can help with finding jobs, CVs, applications, job alerts and hiring on CHOSEN. Try one of these, or ask our team.', links: [{ label: 'Help centre', href: 'faq.html' }], chips: CHIPS[role || 'none'] };
+  }
+  search(t, D) {
+    const loc = LOCS.find(l => l.keys.some(k => k.length <= 3 ? wordIn(t, k) : t.includes(k)));
+    const remote = /remote|from home|wfh|work from home|anywhere/.test(t);
+    const type = /graduate|intern|entry level|entry-level|learnership|first job/.test(t) ? 'Graduate' : /part time|part-time|parttime/.test(t) ? 'Part-time' : /contract|temp|freelance/.test(t) ? 'Contract' : null;
+    const co = D.companies.find(c => c.key.some(k => t.includes(k)));
+    const strip = new Set([].concat(loc ? loc.keys.join(' ').split(' ') : [], ['remote', 'home', 'wfh', 'anywhere', 'graduate', 'intern', 'internship', 'entry', 'level', 'learnership', 'first', 'part', 'time', 'contract', 'temp', 'freelance', 'full', 'south', 'africa', 'sa'], co ? co.key.join(' ').split(' ') : []));
+    const toks = t.replace('call centre', 'callcentre').split(' ').filter(w => w && !STOP.has(w) && !strip.has(w));
+    const groups = toks.map(w => SYN[w] || SYN[w.replace(/s$/, '')] || (w.length >= 3 ? [w.replace(/s$/, '')] : null)).filter(Boolean);
+    const jobish = /job|work|vacanc|hiring|role|position|opening|salary|earn|pay/.test(t);
+    if (!groups.length && !loc && !remote && !type && !co && !jobish) return null;
+    let list = D.jobs.filter(j => (!loc || j.loc.endsWith(', ' + loc.code)) && (!remote || j.mode === 'Remote') && (!type || j.type === type) && (!co || j.co === co.name));
+    let scored = list.map(j => { const s = (j.title + ' ' + j.co + ' ' + j.type).toLowerCase(); return { j, sc: groups.filter(g => g.some(x => s.includes(x))).length }; });
+    if (groups.length) scored = scored.filter(x => x.sc > 0);
+    if (groups.length && !scored.length && !loc && !remote && !type && !co && !jobish) return null;
+    scored.sort((a, b) => b.sc - a.sc);
+    const found = scored.map(x => x.j), n = found.length;
+    const what = (groups.length ? toks.filter(w => !STOP.has(w)).join(' ') + ' ' : '') + (type ? type.toLowerCase() + ' ' : '') + (remote ? 'remote ' : '');
+    const where = loc ? ` in ${loc.label}` : co ? ` at ${co.name}` : '';
+    if (!n) return { role: this.state.role || 'seeker', text: `I couldn’t find any ${what}jobs${where} right now. New jobs come in every hour, so a job alert is the quickest way to hear first.`, links: [{ label: 'Browse all jobs', href: 'jobs.html' }], chips: ['Set up a job alert', 'Remote jobs', 'Graduate jobs', 'Upload my CV'] };
+    const pay = /salary|earn|pay/.test(t);
+    return { role: this.state.role || 'seeker', text: `${pay ? 'Here’s what employers are paying. ' : ''}I found ${n} ${what}${n === 1 ? 'job' : 'jobs'}${where}.${n > 3 ? ' Here are the top 3:' : ''}`, jobs: found.slice(0, 3), links: [{ label: n > 3 ? `See all ${n} on Find jobs` : 'Open Find jobs', href: 'jobs.html' }], chips: ['Set up a job alert', 'Upload my CV', 'How do I apply?'] };
+  }
+
+  renderVals() {
+    const s = this.state;
+    return {
+      rootRef: this.rootRef, listRef: this.listRef, inputRef: this.inputRef,
+      open: s.open, closed: !s.open, tip: s.tip, typing: s.typing,
+      openChat: () => { this.ac() && this.ctx.resume && this.ctx.resume(); this.markSeen(); this.setState({ open: true, tip: false }); },
+      closeChat: () => this.setState({ open: false }),
+      hideTip: e => { e.stopPropagation(); this.markSeen(); this.setState({ tip: false }); },
+      restart: () => { this.setState({ msgs: this.welcome(), chips: ROLE_CHIPS, role: null, typing: false }); },
+      muteLabel: s.muted ? 'Turn sound on' : 'Mute sounds',
+      muteIcon: s.muted ? 'M16 9l6 6 M22 9l-6 6' : 'M16 9a4 4 0 0 1 0 6 M18.5 6.5a8 8 0 0 1 0 11',
+      toggleMute: () => { const m = !s.muted; this.muted = m; try { localStorage.setItem('zola-muted', m ? '1' : '0'); } catch (e) {} this.setState({ muted: m }); },
+      msgs: s.msgs.map(m => ({ bot: m.from === 'bot', me: m.from === 'me', text: m.text, hasJobs: !!(m.jobs && m.jobs.length), hasLinks: !!(m.links && m.links.length), jobs: (m.jobs || []).map(j => ({ ...j, logo: 'https://www.google.com/s2/favicons?domain=' + (FAV[j.ini] || 'local.invalid') + '&sz=128' })), links: m.links || [] })),
+      chips: s.chips.map(c => ({ label: c, pick: () => this.send(c) })), hasChips: s.chips.length > 0 && !s.typing,
+      input: s.input, setInput: e => this.setState({ input: e.target.value }),
+      submit: e => { e.preventDefault(); this.send(s.input); },
+      logoCheck: e => { if (e.target.naturalWidth < 64) e.target.style.display = 'none'; },
+      logoHide: e => { e.target.style.display = 'none'; }
+    };
+  }
+}
+</script>
+</body>
+</html>
