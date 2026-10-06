@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CHOSEN | Jobs across South Africa, chosen for you</title>
+<meta name="description" content="Search verified jobs with real salaries across South Africa. Apply in minutes and track every application.">
+<link rel="icon" href="assets/img/logo.webp">
+<meta property="og:title" content="CHOSEN | Jobs across South Africa, chosen for you">
+<meta property="og:description" content="Search verified jobs with real salaries across South Africa. Apply in minutes and track every application.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/app.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;500;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#FAF8FB;font-family:'Public Sans',sans-serif;color:#1F1724}a{color:#D1007C;text-decoration:none}a:hover{color:#8B4DFF}input::placeholder{color:#8A7F8E}</style>
+<script src="assets/js/motion.js"></script>
+<link rel="stylesheet" href="assets/css/responsive.css">
+</helmet>
+<div style="background:#FAF8FB; min-height:100vh; overflow-x:clip">
+<div data-sticky-shadow="" style="background:#1F1724; color:#fff; font-family:'Public Sans',sans-serif; position:sticky; top:0; z-index:40; border-bottom:1px solid rgba(255,255,255,.06); transition:box-shadow .3s">
+<div style="max-width:1240px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; gap:36px; box-sizing:content-box">
+<a href="index.html" style="display:flex; transition:transform .3s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><img src="assets/img/logo.webp" alt="CHOSEN" data-m="logo" style="height:42px"></a>
+<nav data-m="hide-tab" style="display:flex; gap:30px; font-size:15px; flex:1">
+<sc-for list="{{ hdLinks }}" as="l" hint-placeholder-count="3">
+<sc-if value="{{ l.on }}" hint-placeholder-val="{{ false }}"><a href="{{ l.href }}" style="white-space:nowrap; color:#FFFFFF; padding:8px 0; background-image:linear-gradient(#FF0098,#FF0098); background-repeat:no-repeat; background-position:0 100%; background-size:100% 2px">{{ l.label }}</a></sc-if>
+<sc-if value="{{ l.off }}" hint-placeholder-val="{{ true }}"><a href="{{ l.href }}" style="white-space:nowrap; color:#CFC6D2; padding:8px 0; background-image:linear-gradient(#FF0098,#FF0098); background-repeat:no-repeat; background-position:0 100%; background-size:0% 2px; transition:background-size .35s cubic-bezier(.2,.7,.2,1), color .2s" style-hover="color:#FFFFFF; background-size:100% 2px">{{ l.label }}</a></sc-if>
+</sc-for>
+</nav>
+<span data-m="show-tab" style="display:none; flex:1"></span>
+<a data-m="hide-tab" href="post-a-job.html" style="white-space:nowrap; font-size:14px; color:#CFC6D2; transition:color .2s" style-hover="color:#FFFFFF">For employers</a>
+<a data-m="hide-tab" href="sign-in.html" style="white-space:nowrap; font-size:15px; font-weight:600; color:#FFFFFF; padding:10px 6px; transition:color .2s" style-hover="color:#FF6BC1">Sign in</a>
+<a href="profile.html" style="white-space:nowrap; font-size:15px; font-weight:600; background:#FF0098; color:#FFFFFF; padding:11px 20px; border-radius:999px; display:flex; align-items:center; gap:8px; transition:transform .25s cubic-bezier(.2,.7,.2,1), background .2s, box-shadow .25s" style-hover="background:#FF3DB0; transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,0,152,.35)" style-active="transform:scale(.97)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4 M6 10l6-6 6 6 M4 20h16"></path></svg>Upload CV</a>
+<button data-m="show-tab" onClick="{{ hdToggle }}" aria-label="Menu" style="display:none; flex:none; width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.18); background:transparent; color:#fff; align-items:center; justify-content:center; cursor:pointer; transition:background .2s" style-hover="background:rgba(255,255,255,.08)"><sc-if value="{{ hdOpen }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12 M18 6L6 18"></path></svg></sc-if><sc-if value="{{ hdClosed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16 M4 12h16 M4 17h16"></path></svg></sc-if></button>
+</div>
+<sc-if value="{{ hdOpen }}" hint-placeholder-val="{{ false }}"><div data-m="show-tab" data-reveal="" style="display:none; position:absolute; left:0; right:0; top:100%; background:#1F1724; border-top:1px solid rgba(255,255,255,.08); flex-direction:column; padding:8px 20px 24px; box-shadow:0 20px 40px rgba(0,0,0,.35)">
+<sc-for list="{{ hdLinks }}" as="l" hint-placeholder-count="4"><a href="{{ l.href }}" style="color:#FFFFFF; font-size:18px; font-weight:600; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; transition:color .2s, padding .25s" style-hover="color:#FF6BC1; padding-left:10px">{{ l.label }}<span style="color:#FF0098">→</span></a></sc-for>
+<a href="post-a-job.html" style="color:#CFC6D2; font-size:16px; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.08)">For employers</a>
+<a href="sign-in.html" style="margin-top:16px; text-align:center; color:#FFFFFF; font-weight:600; font-size:16px; padding:14px; border-radius:999px; border:1px solid rgba(255,255,255,.25)">Sign in</a>
+</div></sc-if>
+</div>
+<div style="background:radial-gradient(900px 500px at 85% 20%, rgba(139,77,255,.22), transparent 60%), radial-gradient(700px 420px at 10% 90%, rgba(255,0,152,.16), transparent 60%), #1F1724; color:#fff">
+<div style="max-width:1240px; margin:0 auto; padding:64px 24px 104px; display:grid; grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr); gap:48px; align-items:center">
+<div data-reveal="" data-stagger="" style="display:flex; flex-direction:column; gap:24px">
+<span style="display:flex; align-items:center; gap:10px; width:fit-content; font-size:14px; color:#E9E1EC; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); padding:7px 14px 7px 10px; border-radius:999px"><span style="width:8px; height:8px; border-radius:50%; background:#3DDC97; box-shadow:0 0 0 4px rgba(61,220,151,.18)"></span>12 480 live jobs · updated every hour</span>
+<h1 data-m="h1home" style="margin:0; font-family:'Urbanist',sans-serif; font-weight:300; font-size:clamp(36px,4.6vw,58px); line-height:1.02; letter-spacing:-.03em"><span style="white-space:nowrap">Jobs across South Africa</span><br><span style="font-weight:700; color:#FF0098">chosen</span> <span style="font-weight:700">for you.</span></h1>
+<p style="margin:0; font-size:19px; line-height:1.55; color:#CFC6D2; max-width:520px">Search verified roles with real salaries, from Cape Town to Polokwane. Apply in minutes and track every application in one place.</p>
+<form data-m="stack" onSubmit="{{ search }}" style="background:#fff; border-radius:20px; padding:8px; display:flex; gap:6px; box-shadow:0 24px 60px rgba(0,0,0,.35); color:#1F1724">
+<label style="flex:1.3; display:flex; align-items:center; gap:10px; padding:0 14px; border-radius:14px; transition:background .2s" style-hover="background:#FAF8FB"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B4DFF" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input value="{{ q }}" onChange="{{ setQ }}" placeholder="Job title, skill or company" style="border:0; outline:none; background:transparent; font:16px 'Public Sans',sans-serif; width:100%; padding:16px 0; color:#1F1724"></label>
+<span style="width:1px; background:#EEE8F0; margin:10px 0"></span>
+<label style="flex:1; display:flex; align-items:center; gap:10px; padding:0 14px; border-radius:14px; transition:background .2s" style-hover="background:#FAF8FB"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B4DFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg><input value="{{ loc }}" onChange="{{ setLoc }}" placeholder="City or province" style="border:0; outline:none; background:transparent; font:16px 'Public Sans',sans-serif; width:100%; padding:16px 0; color:#1F1724"></label>
+<button type="submit" style="background:#D1007C; color:#fff; font:600 16px 'Public Sans',sans-serif; padding:0 30px; border-radius:14px; border:0; cursor:pointer; display:flex; align-items:center; gap:8px; transition:background .2s, transform .2s" style-hover="background:#A8005F" style-active="transform:scale(.97)">Search<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14 M13 6l6 6-6 6"></path></svg></button>
+</form>
+<div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center"><span style="font-size:14px; color:#A79DAA; margin-right:4px">Popular:</span><sc-for list="{{ shortcuts }}" as="s" hint-placeholder-count="6"><a href="jobs.html" style="font-size:14px; font-weight:500; color:#E9E1EC; border:1px solid rgba(255,255,255,.16); padding:7px 14px; border-radius:999px; transition:background .2s, border-color .2s, color .2s, transform .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-2px)">{{ s }}</a></sc-for></div>
+</div>
+<div data-m="hide-m" data-reveal="200" style="position:relative; height:540px">
+<div data-tilt="" style="position:absolute; right:0; top:0; width:80%; height:460px; border-radius:28px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,.45); transition:transform .4s cubic-bezier(.2,.7,.2,1)"><img src="https://images.unsplash.com/photo-1561406636-b80293969660?auto=format&fit=crop&w=900&q=70" alt="Job seeker smiling" style="width:100%; height:100%; object-fit:cover; display:block"></div>
+<div style="position:absolute; left:0; bottom:0; width:50%; height:210px; border-radius:22px; overflow:hidden; border:6px solid #1F1724; box-shadow:0 20px 50px rgba(0,0,0,.4)"><img src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?auto=format&fit=crop&w=700&q=70" alt="Team at work" style="width:100%; height:100%; object-fit:cover; display:block"></div>
+<div data-float="10" style="position:absolute; left:-8px; top:56px; background:#fff; color:#1F1724; border-radius:16px; padding:12px 16px 12px 12px; display:flex; gap:12px; align-items:center; box-shadow:0 18px 40px rgba(0,0,0,.3)"><img src="https://images.unsplash.com/photo-1509375400863-22ecd2d7a405?auto=format&fit=crop&w=120&q=70" alt="" style="width:40px; height:40px; border-radius:50%; object-fit:cover"><div style="display:flex; flex-direction:column"><span style="font-weight:600; font-size:14px">Lerato got the job</span><span style="font-size:12px; color:#6B6070">Hired in 2 weeks · Sandton</span></div><span style="width:26px; height:26px; border-radius:50%; background:#E3FAEF; color:#0E8A55; display:grid; place-items:center; font-size:14px; font-weight:700">✓</span></div>
+<div data-float="14" style="position:absolute; right:-12px; bottom:120px; background:#FF0098; color:#FFFFFF; border-radius:16px; padding:14px 18px; display:flex; flex-direction:column; gap:2px; box-shadow:0 18px 40px rgba(255,0,152,.35)"><span style="font:500 11px 'IBM Plex Mono',monospace; letter-spacing:.06em; text-transform:uppercase">New · Junior Data Analyst</span><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:22px">R 28 000 – R 35 000 pm</span></div>
+</div>
+</div>
+</div>
+<div style="border-bottom:1px solid #EEE8F0; background:#fff; padding:26px 0; display:flex; flex-direction:column; gap:16px">
+<div style="max-width:1240px; width:calc(100% - 48px); margin:0 auto; font-size:13px; font-weight:600; color:#6B6070; letter-spacing:.08em; text-transform:uppercase">Companies that hire with CHOSEN</div>
+<div style="max-width:1240px; width:calc(100% - 48px); margin:0 auto; overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
+<div data-marquee="38" style="display:flex; gap:16px; width:max-content; align-items:center">
+<sc-for list="{{ logos }}" as="l" hint-placeholder-count="10"><span style="display:flex; align-items:center; gap:12px; white-space:nowrap; padding:10px 18px 10px 10px; border:1px solid #EEE8F0; border-radius:16px; background:#fff; filter:grayscale(1); opacity:.7; transition:filter .3s, opacity .3s, transform .3s, box-shadow .3s; cursor:default" style-hover="filter:grayscale(0); opacity:1; transform:translateY(-3px); box-shadow:0 10px 24px rgba(31,23,36,.08)"><span style="position:relative; width:36px; height:36px; flex:none; border-radius:10px; background:#F1EAFF; color:#5B2FBF; display:grid; place-items:center; font:700 13px 'Urbanist',sans-serif; overflow:hidden">{{ l.ini }}<img src="{{ l.logo }}" alt="{{ l.name }} logo" onLoad="{{ logoCheck }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#fff"></span><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:19px; color:#1F1724">{{ l.name }}</span></span></sc-for>
+</div>
+</div>
+</div>
+<div style="max-width:1240px; margin:0 auto; padding:88px 24px 0; display:flex; flex-direction:column; gap:28px">
+<div data-reveal="" style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px"><div style="display:flex; flex-direction:column; gap:8px"><span style="font:500 12px 'IBM Plex Mono',monospace; color:#A8005F; letter-spacing:.08em; text-transform:uppercase">Featured this week</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:44px; letter-spacing:-.025em">Featured jobs</h2></div><a href="jobs.html" style="font-weight:600; display:flex; gap:8px; align-items:center; transition:gap .25s" style-hover="gap:14px">View all jobs<span>→</span></a></div>
+<div style="display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:24px">
+<a data-m="feat" data-reveal="" data-zoom="" href="job.html" style="position:relative; border-radius:24px; overflow:hidden; min-height:520px; color:#fff; display:flex; flex-direction:column; justify-content:flex-end; transition:box-shadow .3s" style-hover="box-shadow:0 24px 60px rgba(31,23,36,.22)">
+<img src="https://images.unsplash.com/photo-1573164574511-73c773193279?auto=format&fit=crop&w=1000&q=70" alt="DHL Supply Chain office" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover">
+<div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(31,23,36,0) 30%, rgba(31,23,36,.92) 100%)"></div>
+<span style="position:absolute; top:20px; left:20px; font:600 12px 'Public Sans',sans-serif; background:#FF0098; color:#FFFFFF; padding:6px 12px; border-radius:999px; letter-spacing:.04em; text-transform:uppercase">Featured</span>
+<div style="position:relative; padding:28px; display:flex; flex-direction:column; gap:12px">
+<div style="display:flex; gap:10px; align-items:center"><span style="width:40px; height:40px; border-radius:10px; background:#fff; color:#A8005F; display:grid; place-items:center; font-family:'Urbanist',sans-serif; font-weight:700; overflow:hidden; flex:none"><img src="https://www.google.com/s2/favicons?domain=dhl.de&sz=128" alt="DHL logo" style="width:70%; height:70%; object-fit:contain"></span><span style="font-size:15px; color:#E9E1EC">DHL Supply Chain · Sandton, GP</span></div>
+<span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:38px; letter-spacing:-.02em; line-height:1.05">Junior Data Analyst</span>
+<div style="display:flex; flex-wrap:wrap; gap:8px"><span style="font-size:13px; background:rgba(255,255,255,.14); padding:6px 12px; border-radius:999px">Full-time</span><span style="font-size:13px; background:rgba(255,255,255,.14); padding:6px 12px; border-radius:999px">Hybrid</span><span style="font-size:13px; background:rgba(255,255,255,.14); padding:6px 12px; border-radius:999px">2 years’ experience</span></div>
+<div style="display:flex; justify-content:space-between; align-items:center; padding-top:6px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:22px; color:#FF6BC1">R 28 000 – R 35 000 pm</span><span style="background:#fff; color:#1F1724; font-weight:600; font-size:15px; padding:12px 22px; border-radius:999px">Apply now →</span></div>
+</div>
+</a>
+<div data-reveal="" data-stagger="" style="display:flex; flex-direction:column; gap:12px">
+<sc-for list="{{ featured }}" as="j" hint-placeholder-count="5">
+<div style="background:#fff; border:1px solid #EEE8F0; border-radius:18px; padding:18px 18px 18px 20px; display:flex; gap:16px; align-items:center; transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .3s" style-hover="transform:translateY(-3px); box-shadow:0 14px 34px rgba(31,23,36,.08); border-color:#E2D3F5">
+<div style="width:52px; height:52px; flex:none; border-radius:14px; background:#F1EAFF; color:#5B2FBF; display:grid; place-items:center; font-family:'Urbanist',sans-serif; font-weight:700; font-size:17px; position:relative; overflow:hidden">{{ j.ini }}<img src="{{ j.logo }}" alt="" onLoad="{{ logoCheck }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#fff; padding:7px; box-sizing:border-box"></div>
+<a href="job.html" style="flex:1; display:flex; flex-direction:column; gap:4px; color:#1F1724"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:19px">{{ j.title }}</span><span style="font-size:14px; color:#6B6070">{{ j.co }} · {{ j.loc }} · {{ j.mode }}</span><span style="font-weight:600; color:#A8005F; font-size:14px">{{ j.pay }}</span></a>
+<button onClick="{{ j.toggle }}" aria-label="Save job" style="width:42px; height:42px; border-radius:50%; border:1px solid #EEE8F0; background:#fff; cursor:pointer; display:grid; place-items:center; transition:transform .2s, border-color .2s" style-hover="border-color:#FF0098; transform:scale(1.08)" style-active="transform:scale(.9)">
+<sc-if value="{{ j.saved }}" hint-placeholder-val="{{ false }}"><svg data-pop="" width="18" height="18" viewBox="0 0 24 24" fill="#FF0098" stroke="#FF0098" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></sc-if>
+<sc-if value="{{ j.unsaved }}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B6070" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></sc-if>
+</button>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="max-width:1240px; margin:0 auto; padding:96px 24px 0; display:flex; flex-direction:column; gap:24px">
+<div data-reveal="" style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap"><div style="display:flex; flex-direction:column; gap:8px"><span style="font:500 12px 'IBM Plex Mono',monospace; color:#A8005F; letter-spacing:.08em; text-transform:uppercase">Fresh today</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:44px; letter-spacing:-.025em">Latest jobs</h2></div>
+<div style="display:flex; gap:6px; background:#fff; border:1px solid #EEE8F0; padding:5px; border-radius:999px">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+<sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}"><button style="border:0; cursor:pointer; font:600 14px 'Public Sans',sans-serif; padding:9px 16px; border-radius:999px; background:#1F1724; color:#fff">{{ t.label }}</button></sc-if>
+<sc-if value="{{ t.off }}" hint-placeholder-val="{{ true }}"><button onClick="{{ t.pick }}" style="border:0; cursor:pointer; font:500 14px 'Public Sans',sans-serif; padding:9px 16px; border-radius:999px; background:transparent; color:#6B6070; transition:background .2s, color .2s" style-hover="background:#F5F1F7; color:#1F1724">{{ t.label }}</button></sc-if>
+</sc-for>
+</div></div>
+<div data-reveal="" style="background:#fff; border:1px solid #EEE8F0; border-radius:20px; overflow:hidden">
+<sc-for list="{{ latest }}" as="j" hint-placeholder-count="6">
+<a href="job.html" style="color:#1F1724; display:grid; grid-template-columns:52px minmax(0,2fr) minmax(0,1.3fr) minmax(0,1fr) minmax(0,1.2fr) 110px 28px; gap:18px; align-items:center; padding:18px 24px; border-bottom:1px solid #F3EEF4; font-size:15px; transition:background .2s, padding .3s cubic-bezier(.2,.7,.2,1)" style-hover="background:#FCF7FB; padding-left:30px">
+<span style="width:44px; height:44px; border-radius:12px; background:#FFE6F4; color:#A8005F; display:grid; place-items:center; font-family:'Urbanist',sans-serif; font-weight:700; font-size:14px; position:relative; overflow:hidden">{{ j.ini }}<img src="{{ j.logo }}" alt="" onLoad="{{ logoCheck }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#fff; padding:6px; box-sizing:border-box"></span>
+<div style="display:flex; flex-direction:column; gap:2px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:18px">{{ j.title }}</span><span style="color:#6B6070; font-size:14px">{{ j.co }}</span></div>
+<span style="color:#6B6070">{{ j.loc }}</span><span><span style="font-size:13px; background:#F1EAFF; color:#5B2FBF; padding:5px 10px; border-radius:999px; font-weight:500">{{ j.type }}</span></span><span style="font-weight:600; color:#A8005F">{{ j.pay }}</span><span style="color:#6B6070; font-size:14px; text-align:right">{{ j.ago }}</span><span style="color:#D1007C; font-weight:600">→</span>
+</a>
+</sc-for>
+<sc-if value="{{ noLatest }}" hint-placeholder-val="{{ false }}"><div style="padding:40px; text-align:center; color:#6B6070">No jobs in this filter yet today.</div></sc-if>
+</div>
+</div>
+<div style="max-width:1240px; margin:0 auto; padding:96px 24px 0; display:flex; flex-direction:column; gap:28px">
+<div data-reveal="" style="display:flex; flex-direction:column; gap:8px"><span style="font:500 12px 'IBM Plex Mono',monospace; color:#A8005F; letter-spacing:.08em; text-transform:uppercase">Explore</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:44px; letter-spacing:-.025em">Browse by category</h2></div>
+<div data-reveal="" data-stagger="" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px">
+<sc-for list="{{ categories }}" as="c" hint-placeholder-count="8">
+<a href="jobs.html" data-zoom="" style="position:relative; height:260px; border-radius:22px; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; color:#fff; transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s" style-hover="transform:translateY(-4px); box-shadow:0 22px 44px rgba(31,23,36,.18)">
+<img src="{{ c.img }}" alt="{{ c.name }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover">
+<div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(31,23,36,.05) 30%, rgba(31,23,36,.88)); transition:background .35s" style-hover="background:linear-gradient(180deg, rgba(209,0,124,.28) 0%, rgba(31,23,36,.92))"></div>
+<div style="position:relative; padding:20px; display:flex; justify-content:space-between; align-items:flex-end; gap:10px; pointer-events:none"><div style="display:flex; flex-direction:column; gap:2px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:21px">{{ c.name }}</span><span style="font-size:14px; color:#E9E1EC">{{ c.n }} open jobs</span></div><span style="flex:none; width:38px; height:38px; border-radius:50%; background:#FF0098; color:#FFFFFF; display:grid; place-items:center; font-size:17px">↗</span></div>
+</a>
+</sc-for>
+</div>
+</div>
+<div style="max-width:1240px; margin:0 auto; padding:96px 24px 0">
+<div data-reveal="" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:0; background:#fff; border:1px solid #EEE8F0; border-radius:28px; overflow:hidden">
+<div style="position:relative; min-height:520px; color:#fff; display:flex; flex-direction:column; justify-content:flex-end; padding:36px">
+<img src="https://images.unsplash.com/photo-1604348489791-f95132c5d8c0?auto=format&fit=crop&w=1000&q=70" alt="Johannesburg skyline at dawn" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover">
+<div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(31,23,36,.15), rgba(31,23,36,.9))"></div>
+<div style="position:relative; display:flex; flex-direction:column; gap:10px">
+<span style="font:500 12px 'IBM Plex Mono',monospace; letter-spacing:.08em; text-transform:uppercase; color:#FF6BC1">{{ prov.name }}</span>
+<span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:88px; line-height:.9; letter-spacing:-.04em">{{ prov.n }}</span>
+<span style="font-size:17px; color:#E9E1EC">open jobs · top cities: {{ prov.cities }}</span>
+<a href="jobs.html" style="margin-top:10px; width:fit-content; background:#FF0098; color:#FFFFFF; font-weight:600; padding:12px 22px; border-radius:999px; transition:transform .2s, background .2s" style-hover="background:#FF3DB0; transform:translateY(-2px); color:#FFFFFF">See jobs in {{ prov.name }} →</a>
+</div>
+</div>
+<div style="padding:40px; display:flex; flex-direction:column; gap:20px">
+<div style="display:flex; flex-direction:column; gap:8px"><span style="font:500 12px 'IBM Plex Mono',monospace; color:#A8005F; letter-spacing:.08em; text-transform:uppercase">All 9 provinces</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:40px; letter-spacing:-.025em">Browse by province</h2><span style="font-size:15px; color:#6B6070">Hover a province to preview open jobs.</span></div>
+<div style="display:flex; flex-direction:column">
+<sc-for list="{{ provinces }}" as="p" hint-placeholder-count="9">
+<sc-if value="{{ p.on }}" hint-placeholder-val="{{ false }}"><a href="jobs.html" style="display:flex; justify-content:space-between; align-items:center; padding:13px 16px; border-radius:12px; background:#1F1724; color:#fff; font-size:16px"><span style="font-weight:600">{{ p.name }}</span><span style="display:flex; gap:12px; align-items:center"><span style="color:#FF6BC1; font-weight:600">{{ p.n }}</span>→</span></a></sc-if>
+<sc-if value="{{ p.off }}" hint-placeholder-val="{{ true }}"><a href="jobs.html" onMouseEnter="{{ p.hover }}" style="display:flex; justify-content:space-between; align-items:center; padding:13px 16px; border-radius:12px; color:#1F1724; font-size:16px; border-bottom:1px solid #F3EEF4; transition:background .2s" style-hover="background:#FAF5FA"><span style="font-weight:500">{{ p.name }}</span><span style="color:#6B6070">{{ p.n }}</span></a></sc-if>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+<div style="max-width:1240px; margin:0 auto; padding:96px 24px 0">
+<div style="display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:64px; align-items:center">
+<div data-reveal="" data-zoom="" style="position:relative; height:540px; border-radius:28px; overflow:hidden"><img src="https://images.unsplash.com/photo-1573164573938-c9a3db2e84ff?auto=format&fit=crop&w=900&q=70" alt="Woman applying for jobs on a tablet" style="width:100%; height:100%; object-fit:cover"><div data-float="8" style="position:absolute; left:24px; bottom:24px; right:24px; background:rgba(255,255,255,.95); border-radius:18px; padding:18px; display:flex; flex-direction:column; gap:10px"><div style="display:flex; justify-content:space-between; font-size:14px"><span style="font-weight:600">Application status</span><span style="color:#0E8A55; font-weight:600">Interview booked</span></div><div style="height:8px; border-radius:99px; background:#F1ECF2; overflow:hidden"><div style="width:75%; height:100%; background:linear-gradient(90deg,#FF0098,#8B4DFF); border-radius:99px"></div></div><div style="display:flex; justify-content:space-between; font-size:12px; color:#6B6070"><span>Applied</span><span>Viewed</span><span>Shortlisted</span><span style="color:#1F1724; font-weight:600">Interview</span></div></div></div>
+<div style="display:flex; flex-direction:column; gap:36px">
+<div data-reveal="" style="display:flex; flex-direction:column; gap:8px"><span style="font:500 12px 'IBM Plex Mono',monospace; color:#A8005F; letter-spacing:.08em; text-transform:uppercase">How it works</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:44px; letter-spacing:-.025em; line-height:1.05">From sign-up to interview in three steps</h2></div>
+<div data-reveal="" data-stagger="" style="display:flex; flex-direction:column; gap:12px">
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+<div style="display:flex; gap:20px; padding:22px; border-radius:20px; border:1px solid #EEE8F0; background:#fff; transition:border-color .3s, transform .3s cubic-bezier(.2,.7,.2,1)" style-hover="border-color:#FF0098; transform:translateX(6px)">
+<span style="flex:none; width:52px; height:52px; border-radius:50%; background:#1F1724; color:#FF0098; display:grid; place-items:center; font-family:'Urbanist',sans-serif; font-weight:700; font-size:22px">{{ s.n }}</span>
+<div style="display:flex; flex-direction:column; gap:4px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:21px">{{ s.t }}</span><span style="font-size:15px; color:#6B6070; line-height:1.5">{{ s.d }}</span></div>
+</div>
+</sc-for>
+</div>
+<a href="sign-in.html" style="width:fit-content; background:#D1007C; color:#fff; font-weight:600; padding:15px 28px; border-radius:999px; transition:background .2s, transform .2s" style-hover="background:#A8005F; transform:translateY(-2px); color:#fff">Create your free profile</a>
+</div>
+</div>
+</div>
+<div style="max-width:1240px; margin:0 auto; padding:96px 24px 0">
+<div data-reveal="" data-stagger="" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0; background:#1F1724; color:#fff; border-radius:28px; padding:44px 12px">
+<sc-for list="{{ stats }}" as="s" hint-placeholder-count="4"><div style="display:flex; flex-direction:column; gap:6px; padding:0 28px; border-left:1px solid #3A3240"><span data-count="" style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:56px; letter-spacing:-.03em; color:#FF0098">{{ s.v }}</span><span style="font-size:15px; color:#CFC6D2">{{ s.l }}</span></div></sc-for>
+</div>
+</div>
+<div style="max-width:1240px; margin:0 auto; padding:96px 24px 0; display:flex; flex-direction:column; gap:28px">
+<div data-reveal="" style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px"><div style="display:flex; flex-direction:column; gap:8px"><span style="font:500 12px 'IBM Plex Mono',monospace; color:#A8005F; letter-spacing:.08em; text-transform:uppercase">Success stories</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:44px; letter-spacing:-.025em">Recently placed by CHOSEN</h2></div><a href="success-stories.html" style="font-weight:600; display:flex; gap:8px; transition:gap .25s" style-hover="gap:14px">See all placements<span>→</span></a></div>
+<div data-reveal="" data-stagger="" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px">
+<sc-for list="{{ placements }}" as="p" hint-placeholder-count="3">
+<a data-zoom="" href="success-stories.html" style="background:#fff; border:1px solid #EEE8F0; border-radius:24px; overflow:hidden; display:flex; flex-direction:column; color:#1F1724; transition:box-shadow .3s, transform .3s cubic-bezier(.2,.7,.2,1)" style-hover="box-shadow:0 20px 44px rgba(31,23,36,.1); transform:translateY(-4px)">
+<div style="height:300px; position:relative; overflow:hidden"><img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%; height:100%; object-fit:cover; display:block"><span style="position:absolute; left:16px; top:16px; font:600 12px 'Public Sans',sans-serif; background:#fff; color:#0E8A55; padding:6px 12px; border-radius:999px">✓ Hired in {{ p.weeks }}</span></div>
+<div style="padding:20px 22px 22px; display:flex; flex-direction:column; gap:14px">
+<div style="display:flex; flex-direction:column; gap:2px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:21px">{{ p.name }}</span><span style="font-size:15px; color:#6B6070">{{ p.role }}</span></div>
+<div style="display:flex; gap:10px; align-items:center; border-top:1px solid #F3EEF4; padding-top:14px"><span style="width:36px; height:36px; border-radius:10px; background:#FFE6F4; color:#A8005F; display:grid; place-items:center; font-family:'Urbanist',sans-serif; font-weight:700; font-size:13px; position:relative; overflow:hidden">{{ p.ini }}<img src="{{ p.logo }}" alt="" onLoad="{{ logoCheck }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#fff; padding:5px; box-sizing:border-box"></span><span style="font-size:14px"><span style="color:#6B6070">Placed at</span> <b>{{ p.co }}</b><span style="color:#6B6070"> · {{ p.city }}</span></span></div>
+</div>
+</a>
+</sc-for>
+</div>
+</div>
+<div style="max-width:1240px; margin:0 auto; padding:96px 24px; display:flex; flex-direction:column; gap:28px">
+<div data-reveal="" style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap"><div style="display:flex; flex-direction:column; gap:8px"><span style="font:500 12px 'IBM Plex Mono',monospace; color:#A8005F; letter-spacing:.08em; text-transform:uppercase">In their words</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:44px; letter-spacing:-.025em">What job seekers say</h2></div>
+<div style="display:flex; gap:10px; align-items:center"><div style="display:flex; gap:6px; margin-right:8px"><sc-for list="{{ dots }}" as="d" hint-placeholder-count="4"><button onClick="{{ d.go }}" aria-label="Go to testimonial" style="height:8px; border:0; border-radius:99px; cursor:pointer; padding:0; transition:width .35s cubic-bezier(.2,.7,.2,1), background .3s; width:{{ d.w }}; background:{{ d.bg }}"></button></sc-for></div><button onClick="{{ prevQ }}" aria-label="Previous" style="width:48px; height:48px; border-radius:50%; border:1px solid #E2D9E6; background:#fff; cursor:pointer; font-size:18px; color:#1F1724; transition:background .2s, color .2s, border-color .2s, transform .2s" style-hover="background:#1F1724; color:#fff; border-color:#1F1724" style-active="transform:scale(.92)">←</button><button onClick="{{ nextQ }}" aria-label="Next" style="width:48px; height:48px; border-radius:50%; border:1px solid #E2D9E6; background:#fff; cursor:pointer; font-size:18px; color:#1F1724; transition:background .2s, color .2s, border-color .2s, transform .2s" style-hover="background:#1F1724; color:#fff; border-color:#1F1724" style-active="transform:scale(.92)">→</button></div></div>
+<div data-reveal="" onMouseEnter="{{ pause }}" onMouseLeave="{{ resume }}" style="overflow:hidden; border-radius:28px; padding:6px 0 14px">
+<div style="display:flex; transition:transform .7s cubic-bezier(.65,0,.25,1); transform:{{ trackX }}">
+<sc-for list="{{ quotes }}" as="t" hint-placeholder-count="1">
+<div style="flex:0 0 100%; box-sizing:border-box; padding:0 2px">
+<div style="background:#fff; border:1px solid #EEE8F0; border-radius:28px; overflow:hidden; display:grid; grid-template-columns:320px minmax(0,1fr); min-height:340px; transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, border-color .4s" style-hover="transform:translateY(-6px) scale(1.005); box-shadow:0 28px 60px rgba(31,23,36,.12); border-color:#FFC2E5">
+<div data-zoom="" style="overflow:hidden"><img src="{{ t.img }}" alt="{{ t.name }}" style="width:100%; height:100%; object-fit:cover; display:block"></div>
+<div style="padding:44px 48px; display:flex; flex-direction:column; justify-content:space-between; gap:28px; position:relative">
+<span style="position:absolute; right:40px; top:6px; font-family:'Urbanist',sans-serif; font-weight:700; font-size:160px; color:#FFE6F4; line-height:1">”</span>
+<div style="display:flex; gap:4px; color:#FF0098; font-size:18px; position:relative">★★★★★</div>
+<p style="margin:0; font-family:'Urbanist',sans-serif; font-weight:500; font-size:30px; line-height:1.3; letter-spacing:-.01em; position:relative">{{ t.q }}</p>
+<div style="display:flex; justify-content:space-between; align-items:center; gap:16px; border-top:1px solid #F3EEF4; padding-top:20px"><div style="display:flex; flex-direction:column"><span style="font-weight:600; font-size:17px">{{ t.name }}</span><span style="font-size:14px; color:#6B6070">{{ t.role }}</span></div><span style="font-size:13px; font-weight:600; background:#E3FAEF; color:#0E8A55; padding:6px 12px; border-radius:999px">✓ Hired through CHOSEN</span></div>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="max-width:1240px; margin:0 auto 96px; padding:0 24px">
+<div data-reveal="" style="background:#D1007C; color:#fff; border-radius:28px; padding:48px 56px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:32px; align-items:center; position:relative; overflow:hidden">
+<div style="position:absolute; right:-80px; top:-80px; width:320px; height:320px; border-radius:50%; background:#FF0098; opacity:.5"></div>
+<div style="position:relative; display:flex; flex-direction:column; gap:10px"><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:40px; letter-spacing:-.02em">Never miss a job. Get the CHOSEN app.</h2><span style="font-size:17px; color:#FFE6F4">Instant alerts, one-tap apply and interview reminders on your phone.</span></div>
+<div style="position:relative; display:flex; gap:12px">
+<a href="#" style="display:flex; align-items:center; gap:12px; background:#1F1724; color:#fff; padding:10px 20px 10px 16px; border-radius:14px; transition:transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s" style-hover="transform:translateY(-3px); box-shadow:0 14px 30px rgba(31,23,36,.35); color:#fff"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"></path></svg><span style="display:flex; flex-direction:column"><span style="font-size:11px; color:#CFC6D2">Download on the</span><span style="font-weight:600; font-size:17px">App Store</span></span></a>
+<a href="#" style="display:flex; align-items:center; gap:12px; background:#1F1724; color:#fff; padding:10px 20px 10px 16px; border-radius:14px; transition:transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s" style-hover="transform:translateY(-3px); box-shadow:0 14px 30px rgba(31,23,36,.35); color:#fff"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#00D7FE" d="M1.34.92a1.5 1.5 0 0 0-.12.57v21.02c0 .22.05.42.13.6l11.15-11.09z"></path><path fill="#FFCE00" d="M22.02 13.3l-3.92 2.22-3.51-3.5 3.54-3.52 3.89 2.2a1.49 1.49 0 0 1 0 2.6z"></path><path fill="#00F076" d="M13.54 10.99l3.26-3.24L3.45.2a1.47 1.47 0 0 0-.95-.18z"></path><path fill="#FF3A44" d="M13.54 13.06l-11 10.93c.3.04.61-.02.91-.18l13.32-7.54z"></path></svg><span style="display:flex; flex-direction:column"><span style="font-size:11px; color:#CFC6D2">Get it on</span><span style="font-weight:600; font-size:17px">Google Play</span></span></a>
+</div>
+</div>
+</div>
+<div style="background:#1F1724; color:#F5F0F4; font-family:'Public Sans',sans-serif; overflow:hidden">
+<div style="max-width:1240px; margin:0 auto; padding:72px 24px 0; display:flex; flex-direction:column; gap:48px; box-sizing:content-box">
+<div style="display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:end; padding-bottom:48px; border-bottom:1px solid #352C3A">
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-size:13px; font-weight:600; color:#FF0098; letter-spacing:.08em; text-transform:uppercase">Job alerts</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:300; font-size:44px; line-height:1.05; letter-spacing:-.02em">Get new jobs in your inbox <span style="font-weight:700">before anyone else.</span></h2></div>
+<div style="display:flex; flex-direction:column; gap:10px">
+<sc-if value="{{ ftSubscribed }}" hint-placeholder-val="{{ false }}"><div style="background:#2A2230; border:1px solid #3A3240; border-radius:999px; padding:16px 22px; font-size:15px; color:#F5F0F4">You’re subscribed. Watch your inbox for new jobs.</div></sc-if>
+<sc-if value="{{ ftNotSubscribed }}" hint-placeholder-val="{{ true }}"><form onSubmit="{{ ftSubscribe }}" style="display:flex; gap:8px; background:#2A2230; border:1px solid #3A3240; border-radius:999px; padding:6px 6px 6px 22px; align-items:center"><input type="email" required placeholder="Your email address" style="flex:1; background:transparent; border:0; outline:none; color:#F5F0F4; font:15px 'Public Sans',sans-serif"><button type="submit" style="background:#FF0098; color:#FFFFFF; font:600 15px 'Public Sans',sans-serif; padding:12px 24px; border-radius:999px; border:0; cursor:pointer; transition:background .2s, transform .2s" style-hover="background:#FF3DB0" style-active="transform:scale(.96)">Subscribe</button></form></sc-if>
+<span style="font-size:13px; color:#A79DAA; padding-left:22px">Weekly, no spam. Unsubscribe anytime.</span></div>
+</div>
+<div data-reveal="" data-stagger="" style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1.2fr; gap:32px; font-size:14px">
+<div style="display:flex; flex-direction:column; gap:16px"><a href="index.html" style="display:flex"><img src="assets/img/logo.webp" alt="CHOSEN" style="height:48px"></a><span style="color:#B9AFBC; line-height:1.6; max-width:260px">South Africa’s job site for job seekers. Verified employers and real salaries.</span>
+<div style="display:flex; gap:8px"><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"></path></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22z"></path></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path></svg></span></div></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Job seekers</span><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Find jobs</a><a href="profile.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Upload CV</a><a href="dashboard.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Job alerts</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Graduate jobs</a><a href="career-advice.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Career advice</a></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Jobs by city</span><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Johannesburg</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Cape Town</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Durban</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Pretoria</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Gqeberha</a></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Company</span><a href="about.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">About us</a><a href="post-a-job.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Post a job</a><a href="companies.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Companies</a><a href="success-stories.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Success stories</a><a href="faq.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">FAQ</a><a href="about.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Contact</a></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Get in touch</span><span style="color:#B9AFBC">hello@chosen.co.za</span><span style="color:#B9AFBC">+27 10 000 0000</span><span style="color:#B9AFBC; line-height:1.6">Sandton, Johannesburg<br>Gauteng, South Africa</span>
+<div style="display:flex; flex-direction:column; align-items:flex-start; gap:8px; padding-top:6px"><span style="display:flex; align-items:center; gap:10px; white-space:nowrap; min-width:156px; box-sizing:border-box; border:1px solid #3A3240; background:#2A2230; color:#F5F0F4; padding:7px 12px; border-radius:10px; cursor:pointer; transition:border-color .2s, transform .25s" style-hover="border-color:#FF0098; transform:translateY(-2px)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"></path></svg><span style="display:flex; flex-direction:column"><span style="font-size:10px; color:#A79DAA">Download on the</span><span style="font-weight:600; font-size:13px">App Store</span></span></span><span style="display:flex; align-items:center; gap:10px; white-space:nowrap; min-width:156px; box-sizing:border-box; border:1px solid #3A3240; background:#2A2230; color:#F5F0F4; padding:7px 12px; border-radius:10px; cursor:pointer; transition:border-color .2s, transform .25s" style-hover="border-color:#FF0098; transform:translateY(-2px)"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#00D7FE" d="M1.34.92a1.5 1.5 0 0 0-.12.57v21.02c0 .22.05.42.13.6l11.15-11.09z"></path><path fill="#FFCE00" d="M22.02 13.3l-3.92 2.22-3.51-3.5 3.54-3.52 3.89 2.2a1.49 1.49 0 0 1 0 2.6z"></path><path fill="#00F076" d="M13.54 10.99l3.26-3.24L3.45.2a1.47 1.47 0 0 0-.95-.18z"></path><path fill="#FF3A44" d="M13.54 13.06l-11 10.93c.3.04.61-.02.91-.18l13.32-7.54z"></path></svg><span style="display:flex; flex-direction:column"><span style="font-size:10px; color:#A79DAA">Get it on</span><span style="font-weight:600; font-size:13px">Google Play</span></span></span></div></div>
+</div>
+<div style="display:flex; justify-content:space-between; align-items:center; gap:24px; padding:20px 0; border-top:1px solid #352C3A; font-size:13px; color:#A79DAA"><span>© 2026 CHOSEN. All rights reserved.</span><div style="display:flex; gap:20px; flex:none; white-space:nowrap"><a href="faq.html" style="color:#A79DAA" style-hover="color:#FFFFFF">FAQ</a><span>Privacy policy</span><span>POPIA</span><span>Terms of use</span><span>Cookies</span></div></div>
+<div data-reveal="" style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:290px; line-height:.72; letter-spacing:-.04em; text-align:center; background:linear-gradient(90deg,#FF0098,#8B4DFF); -webkit-background-clip:text; background-clip:text; color:transparent; opacity:.9; margin:0 -20px -10px">CHOSEN</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+function __hdVals(c, a) {
+  const links = [
+    { label: 'Find jobs', href: 'jobs.html', k: 'jobs' },
+    { label: 'Companies', href: 'companies.html', k: 'companies' },
+    { label: 'Career advice', href: 'career-advice.html', k: 'advice' },
+    { label: 'Success stories', href: 'success-stories.html', k: 'stories' }
+  ].map(l => ({ ...l, on: a === l.k, off: a !== l.k }));
+  const o = !!(c.state && c.state.__hdOpen);
+  return { hdLinks: links, hdOpen: o, hdClosed: !o, hdToggle: () => c.setState({ __hdOpen: !o }) };
+}
+function __ftVals(c) {
+  const s = !!(c.state && c.state.__ftSub);
+  return { ftSubscribed: s, ftNotSubscribed: !s, ftSubscribe: e => { e.preventDefault(); c.setState({ __ftSub: true }); } };
+}
+const FAV = { DH: 'dhl.de', MC: 'mediclinic.co.za', TA: 'takealot.com', TY: 'toyota.co.za', SB: 'standardbank.co.za', TS: 'tsogosun.com', VC: 'vodacom.com', PW: 'pwc.co.za', CH: 'checkers.co.za', SR: 'shoprite.co.za' };
+const logoOf = ini => 'https://www.google.com/s2/favicons?domain=' + (FAV[ini] || 'local.invalid') + '&sz=128';
+const withLogos = v => { for (const k in v) if (Array.isArray(v[k])) v[k] = v[k].map(o => o && typeof o === 'object' && o.ini && !o.logo ? { ...o, logo: logoOf(o.ini) } : o); v.logoCheck = e => { if (e.target.naturalWidth < 64) e.target.style.display = 'none'; }; return v; };
+const LOGOS = [['DHL Supply Chain','dhl.de'],['Mediclinic','mediclinic.co.za'],['Takealot','takealot.com'],['Toyota SA','toyota.co.za'],['Standard Bank','standardbank.co.za'],['Tsogo Sun','tsogosun.com'],['Vodacom','vodacom.com'],['PwC South Africa','pwc.co.za'],['Checkers','checkers.co.za'],['Shoprite','shoprite.co.za'],['Discovery','discovery.co.za'],['Uber','uber.com']].map(([name, d]) => ({ name, ini: name.split(' ').map(w => w[0]).join('').slice(0, 2), logo: 'https://www.google.com/s2/favicons?domain=' + d + '&sz=128' }));
+const U = (id, w = 900) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
+class Component extends DCLogic {
+  state = { saved: { 1: true }, tab: 'All', prov: 0, qi: 0, q: '', loc: '' };
+  componentDidMount() { this.tm = setInterval(() => { if (!this.paused) this.setState(s => ({ qi: s.qi + 1 })); }, 5500); }
+  componentWillUnmount() { clearInterval(this.tm); }
+  renderVals() { return Object.assign(this.__pv(), __hdVals(this, 'home'), __ftVals(this)); }
+  __pv() { return withLogos(this._rv()); }
+  _rv() {
+    const s = this.state;
+    const featured = [
+      { title: 'Registered Nurse, ICU', co: 'Mediclinic', loc: 'Durban, KZN', mode: 'On-site', pay: 'R 42 000 pm', ini: 'MC' },
+      { title: 'Frontend Developer', co: 'Takealot', loc: 'Cape Town, WC', mode: 'Remote', pay: 'R 55 000 – R 70 000 pm', ini: 'TA' },
+      { title: 'Sales Representative', co: 'Toyota SA', loc: 'Pretoria, GP', mode: 'On-site', pay: 'R 18 000 + commission', ini: 'TY' },
+      { title: 'Maintenance Engineer', co: 'Checkers', loc: 'Polokwane, LP', mode: 'On-site', pay: 'R 60 000 pm', ini: 'CH' },
+      { title: 'Call Centre Agent', co: 'Vodacom', loc: 'Gqeberha, EC', mode: 'On-site', pay: 'R 9 500 pm', ini: 'VC' }
+    ].map((j, i) => ({ ...j, saved: !!s.saved[i], unsaved: !s.saved[i], toggle: (e) => { e.preventDefault(); this.setState(st => ({ saved: { ...st.saved, [i]: !st.saved[i] } })); } }));
+    const allLatest = [
+      { title: 'Bookkeeper', co: 'PwC South Africa', loc: 'Bloemfontein, FS', type: 'Full-time', pay: 'R 22 000 pm', ago: '1 hour ago', ini: 'PW', remote: false },
+      { title: 'Graduate Trainee, Finance', co: 'Standard Bank', loc: 'Johannesburg, GP', type: 'Graduate', pay: 'R 15 000 pm', ago: '3 hours ago', ini: 'SB', remote: false },
+      { title: 'Customer Success Lead', co: 'Takealot', loc: 'Remote, SA', type: 'Full-time', pay: 'R 38 000 pm', ago: '4 hours ago', ini: 'TA', remote: true },
+      { title: 'Chef de Partie', co: 'Tsogo Sun', loc: 'Cape Town, WC', type: 'Full-time', pay: 'R 16 500 pm', ago: '5 hours ago', ini: 'TS', remote: false },
+      { title: 'Foundation Phase Teacher', co: 'Sunridge Primary', loc: 'Mbombela, MP', type: 'Contract', pay: 'R 24 000 pm', ago: 'Yesterday', ini: 'SP', remote: false },
+      { title: 'Payroll Administrator', co: 'Shoprite', loc: 'Remote, SA', type: 'Contract', pay: 'R 21 000 pm', ago: 'Yesterday', ini: 'SR', remote: true },
+      { title: 'IT Support Technician', co: 'Kimberley Tech', loc: 'Kimberley, NC', type: 'Full-time', pay: 'R 19 000 pm', ago: '2 days ago', ini: 'KT', remote: false }
+    ];
+    const latest = allLatest.filter(j => s.tab === 'All' || (s.tab === 'Remote' ? j.remote : j.type === s.tab)).slice(0, 6);
+    const provinces = [
+      { name: 'Gauteng', n: '4 820', cities: 'Johannesburg, Pretoria, Sandton' }, { name: 'Western Cape', n: '2 310', cities: 'Cape Town, Stellenbosch, George' },
+      { name: 'KwaZulu-Natal', n: '1 640', cities: 'Durban, Pietermaritzburg, Umhlanga' }, { name: 'Eastern Cape', n: '780', cities: 'Gqeberha, East London, Mthatha' },
+      { name: 'Free State', n: '420', cities: 'Bloemfontein, Welkom' }, { name: 'Limpopo', n: '390', cities: 'Polokwane, Tzaneen' },
+      { name: 'Mpumalanga', n: '370', cities: 'Mbombela, eMalahleni' }, { name: 'North West', n: '310', cities: 'Rustenburg, Mahikeng' },
+      { name: 'Northern Cape', n: '150', cities: 'Kimberley, Upington' }
+    ];
+    const quotes = [
+      { q: 'I applied for three jobs on a Monday and had an interview by Friday. The salary was right there on the listing.', name: 'Thandiwe Mokoena', role: 'Registered Nurse, Durban', img: U('1610722839611-f7837e1dd39f', 700) },
+      { q: 'Salaries are shown upfront, so I only apply for jobs that make sense for me. It saves hours every week.', name: 'Nandi Dlamini', role: 'Frontend Developer, Cape Town', img: U('1615479362866-f71a01281254', 700) },
+      { q: 'The job alerts found me my first graduate role. I didn’t even have to search after the first week.', name: 'Lerato Khumalo', role: 'Data Analyst, Sandton', img: U('1509375400863-22ecd2d7a405', 700) },
+      { q: 'I could follow every application from applied to interview. No more sending CVs into the void.', name: 'Kagiso Molefe', role: 'Branch Manager, Pretoria', img: U('1666866834805-8cc91d4774ac', 700) }
+    ];
+    const n = quotes.length, qi = ((s.qi % n) + n) % n;
+    return {
+      q: s.q, loc: s.loc,
+      setQ: e => this.setState({ q: e.target.value }), setLoc: e => this.setState({ loc: e.target.value }),
+      search: e => { e.preventDefault(); window.location.href = 'jobs.html'; },
+      shortcuts: ['IT & Software', 'Healthcare', 'Finance', 'Remote', 'Graduate'],
+      logos: [...LOGOS, ...LOGOS], logoCheck: e => { if (e.target.naturalWidth < 64) e.target.style.display = 'none'; },
+      featured,
+      tabs: ['All', 'Full-time', 'Contract', 'Remote', 'Graduate'].map(t => ({ label: t, on: s.tab === t, off: s.tab !== t, pick: () => this.setState({ tab: t }) })),
+      latest, noLatest: latest.length === 0,
+      categories: [
+        { name: 'IT & Software', n: '1 240', img: U('1622295023576-e4fb6e9e8ba2', 600) },
+        { name: 'Healthcare', n: '860', img: U('1610722839611-f7837e1dd39f', 600) },
+        { name: 'Finance & Accounting', n: '720', img: U('1666866854783-8943590e37c8', 600) },
+        { name: 'Sales & Marketing', n: '1 010', img: U('1530698060343-ae5da1a26d7f', 600) },
+        { name: 'Engineering', n: '540', img: U('1577948000111-9c970dfe3743', 600) },
+        { name: 'Education', n: '390', img: U('1573164574397-dd250bc8a598', 600) },
+        { name: 'Admin & Office', n: '950', img: U('1573164573938-c9a3db2e84ff', 600) },
+        { name: 'Hospitality', n: '410', img: U('1576485375217-d6a95e34d043', 600) }
+      ],
+      prov: provinces[s.prov],
+      provinces: provinces.map((p, i) => ({ ...p, on: s.prov === i, off: s.prov !== i, hover: () => this.setState({ prov: i }) })),
+      steps: [
+        { n: 1, t: 'Create your profile', d: 'Sign up with your email or phone and upload your CV in under two minutes.' },
+        { n: 2, t: 'Search and save jobs', d: 'Filter by city, province, salary and job type. Save the ones you like.' },
+        { n: 3, t: 'Apply with one tap', d: 'Send your CV and track every application, from applied to interview.' }
+      ],
+      stats: [{ v: '12 480', l: 'live jobs right now' }, { v: '3 800', l: 'verified employers' }, { v: '9', l: 'provinces covered' }, { v: '21', l: 'days, average time to hire' }],
+      placements: [
+        { name: 'Thandiwe Mokoena', role: 'Registered Nurse, ICU', co: 'Mediclinic', ini: 'MC', city: 'Durban', weeks: '3 weeks', img: U('1610722839611-f7837e1dd39f', 700) },
+        { name: 'Nandi Dlamini', role: 'Frontend Developer', co: 'Takealot', ini: 'TA', city: 'Cape Town', weeks: '4 weeks', img: U('1615479362866-f71a01281254', 700) },
+        { name: 'Lerato Khumalo', role: 'Junior Data Analyst', co: 'DHL Supply Chain', ini: 'DH', city: 'Sandton', weeks: '2 weeks', img: U('1509375400863-22ecd2d7a405', 700) }
+      ],
+      quotes, trackX: `translateX(-${qi * 100}%)`,
+      dots: quotes.map((_, i) => ({ w: i === qi ? '28px' : '8px', bg: i === qi ? '#D1007C' : '#E2D9E6', go: () => this.setState({ qi: i }) })),
+      pause: () => { this.paused = true; }, resume: () => { this.paused = false; },
+      prevQ: () => this.setState({ qi: s.qi - 1 }), nextQ: () => this.setState({ qi: s.qi + 1 })
+    };
+  }
+}
+</script>
+</body>
+</html>

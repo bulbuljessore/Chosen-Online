@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sign in or create an account | CHOSEN</title>
+<meta name="description" content="Sign in to CHOSEN or create a free account.">
+<link rel="icon" href="assets/img/logo.webp">
+<meta property="og:title" content="Sign in or create an account | CHOSEN">
+<meta property="og:description" content="Sign in to CHOSEN or create a free account.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/app.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;500;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#FAF8FB;font-family:'Public Sans',sans-serif;color:#1F1724}a{color:#D1007C;text-decoration:none}a:hover{color:#8B4DFF}input::placeholder{color:#8A7F8E}</style>
+<script src="assets/js/motion.js"></script>
+<link rel="stylesheet" href="assets/css/responsive.css">
+</helmet>
+<div style="background:#FAF8FB; min-height:100vh; display:flex; flex-direction:column">
+<div data-sticky-shadow="" style="background:#1F1724; color:#fff; font-family:'Public Sans',sans-serif; position:sticky; top:0; z-index:40; border-bottom:1px solid rgba(255,255,255,.06); transition:box-shadow .3s">
+<div style="max-width:1240px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; gap:36px; box-sizing:content-box">
+<a href="index.html" style="display:flex; transition:transform .3s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><img src="assets/img/logo.webp" alt="CHOSEN" data-m="logo" style="height:42px"></a>
+<nav data-m="hide-tab" style="display:flex; gap:30px; font-size:15px; flex:1">
+<sc-for list="{{ hdLinks }}" as="l" hint-placeholder-count="3">
+<sc-if value="{{ l.on }}" hint-placeholder-val="{{ false }}"><a href="{{ l.href }}" style="white-space:nowrap; color:#FFFFFF; padding:8px 0; background-image:linear-gradient(#FF0098,#FF0098); background-repeat:no-repeat; background-position:0 100%; background-size:100% 2px">{{ l.label }}</a></sc-if>
+<sc-if value="{{ l.off }}" hint-placeholder-val="{{ true }}"><a href="{{ l.href }}" style="white-space:nowrap; color:#CFC6D2; padding:8px 0; background-image:linear-gradient(#FF0098,#FF0098); background-repeat:no-repeat; background-position:0 100%; background-size:0% 2px; transition:background-size .35s cubic-bezier(.2,.7,.2,1), color .2s" style-hover="color:#FFFFFF; background-size:100% 2px">{{ l.label }}</a></sc-if>
+</sc-for>
+</nav>
+<span data-m="show-tab" style="display:none; flex:1"></span>
+<a data-m="hide-tab" href="post-a-job.html" style="white-space:nowrap; font-size:14px; color:#CFC6D2; transition:color .2s" style-hover="color:#FFFFFF">For employers</a>
+<a data-m="hide-tab" href="sign-in.html" style="white-space:nowrap; font-size:15px; font-weight:600; color:#FFFFFF; padding:10px 6px; transition:color .2s" style-hover="color:#FF6BC1">Sign in</a>
+<a href="profile.html" style="white-space:nowrap; font-size:15px; font-weight:600; background:#FF0098; color:#FFFFFF; padding:11px 20px; border-radius:999px; display:flex; align-items:center; gap:8px; transition:transform .25s cubic-bezier(.2,.7,.2,1), background .2s, box-shadow .25s" style-hover="background:#FF3DB0; transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,0,152,.35)" style-active="transform:scale(.97)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4 M6 10l6-6 6 6 M4 20h16"></path></svg>Upload CV</a>
+<button data-m="show-tab" onClick="{{ hdToggle }}" aria-label="Menu" style="display:none; flex:none; width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.18); background:transparent; color:#fff; align-items:center; justify-content:center; cursor:pointer; transition:background .2s" style-hover="background:rgba(255,255,255,.08)"><sc-if value="{{ hdOpen }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12 M18 6L6 18"></path></svg></sc-if><sc-if value="{{ hdClosed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16 M4 12h16 M4 17h16"></path></svg></sc-if></button>
+</div>
+<sc-if value="{{ hdOpen }}" hint-placeholder-val="{{ false }}"><div data-m="show-tab" data-reveal="" style="display:none; position:absolute; left:0; right:0; top:100%; background:#1F1724; border-top:1px solid rgba(255,255,255,.08); flex-direction:column; padding:8px 20px 24px; box-shadow:0 20px 40px rgba(0,0,0,.35)">
+<sc-for list="{{ hdLinks }}" as="l" hint-placeholder-count="4"><a href="{{ l.href }}" style="color:#FFFFFF; font-size:18px; font-weight:600; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; transition:color .2s, padding .25s" style-hover="color:#FF6BC1; padding-left:10px">{{ l.label }}<span style="color:#FF0098">→</span></a></sc-for>
+<a href="post-a-job.html" style="color:#CFC6D2; font-size:16px; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.08)">For employers</a>
+<a href="sign-in.html" style="margin-top:16px; text-align:center; color:#FFFFFF; font-weight:600; font-size:16px; padding:14px; border-radius:999px; border:1px solid rgba(255,255,255,.25)">Sign in</a>
+</div></sc-if>
+</div>
+<div style="flex:1; max-width:1240px; width:calc(100% - 48px); margin:0 auto; padding:40px 0 64px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px">
+<div data-reveal="" style="position:relative; border-radius:28px; overflow:hidden; min-height:640px; color:#fff; display:flex; flex-direction:column; justify-content:flex-end">
+<img src="https://images.unsplash.com/photo-1530698060343-ae5da1a26d7f?auto=format&fit=crop&w=1000&q=70" alt="Job seeker using her phone" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover">
+<div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(31,23,36,.05) 30%, rgba(31,23,36,.9))"></div>
+<div data-float="6" style="position:absolute; top:28px; left:28px; background:#fff; color:#1F1724; border-radius:16px; padding:12px 16px; display:flex; gap:10px; align-items:center; box-shadow:0 16px 36px rgba(0,0,0,.25)"><span style="width:10px; height:10px; border-radius:50%; background:#3DDC97"></span><span style="font-size:14px; font-weight:600">218 new jobs since yesterday</span></div>
+<div style="position:relative; padding:40px; display:flex; flex-direction:column; gap:16px"><p style="margin:0; font-family:'Urbanist',sans-serif; font-weight:500; font-size:30px; line-height:1.25">“I set up my profile on the taxi home. Two weeks later I had an offer.”</p><span style="font-size:15px; color:#E9E1EC">Amahle Cele · Customer Success Lead, Gqeberha</span></div>
+</div>
+<div data-reveal="120" style="background:#fff; border:1px solid #EEE8F0; border-radius:28px; padding:48px 56px; display:flex; flex-direction:column; justify-content:center; gap:24px">
+<div style="display:flex; background:#F5F1F7; border-radius:999px; padding:5px; width:fit-content">
+<sc-for list="{{ modes }}" as="m" hint-placeholder-count="2">
+<sc-if value="{{ m.on }}" hint-placeholder-val="{{ false }}"><button style="border:0; background:#fff; box-shadow:0 2px 8px rgba(31,23,36,.1); font:600 15px 'Public Sans',sans-serif; padding:10px 22px; border-radius:999px; cursor:pointer; color:#1F1724">{{ m.label }}</button></sc-if>
+<sc-if value="{{ m.off }}" hint-placeholder-val="{{ true }}"><button onClick="{{ m.pick }}" style="border:0; background:transparent; font:500 15px 'Public Sans',sans-serif; padding:10px 22px; border-radius:999px; cursor:pointer; color:#6B6070; transition:color .2s" style-hover="color:#1F1724">{{ m.label }}</button></sc-if>
+</sc-for>
+</div>
+<div style="display:flex; flex-direction:column; gap:8px"><h1 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:40px; letter-spacing:-.025em">{{ title }}</h1><span style="font-size:16px; color:#6B6070">{{ sub }}</span></div>
+<button style="display:flex; align-items:center; justify-content:center; gap:10px; border:1px solid #E2D9E6; background:#fff; font:600 15px 'Public Sans',sans-serif; padding:14px; border-radius:14px; cursor:pointer; color:#1F1724; transition:border-color .2s, background .2s" style-hover="border-color:#1F1724; background:#FAF8FB"><svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path></svg>Continue with Google</button>
+<div style="display:flex; align-items:center; gap:12px; font-size:13px; color:#8A7F8E"><span style="flex:1; height:1px; background:#EEE8F0"></span>or with email<span style="flex:1; height:1px; background:#EEE8F0"></span></div>
+<form onSubmit="{{ submit }}" style="display:flex; flex-direction:column; gap:14px">
+<sc-if value="{{ isSignup }}" hint-placeholder-val="{{ false }}"><label style="display:flex; flex-direction:column; gap:8px; font-size:14px; font-weight:600">Full name<input required placeholder="e.g. Lerato Khumalo" style="font:15px 'Public Sans',sans-serif; padding:14px 16px; border:1px solid #E2D9E6; border-radius:14px; outline:none; transition:border-color .2s, box-shadow .2s" style-focus="border-color:#8B4DFF; box-shadow:0 0 0 4px #F1EAFF"></label></sc-if>
+<label style="display:flex; flex-direction:column; gap:8px; font-size:14px; font-weight:600">Email or phone<input required placeholder="you@example.com" style="font:15px 'Public Sans',sans-serif; padding:14px 16px; border:1px solid #E2D9E6; border-radius:14px; outline:none; transition:border-color .2s, box-shadow .2s" style-focus="border-color:#8B4DFF; box-shadow:0 0 0 4px #F1EAFF"></label>
+<label style="display:flex; flex-direction:column; gap:8px; font-size:14px; font-weight:600"><span style="display:flex; justify-content:space-between">Password<sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}"><a href="#" style="font-weight:500">Forgot password?</a></sc-if></span>
+<span style="display:flex; align-items:center; border:1px solid #E2D9E6; border-radius:14px; padding-right:8px; transition:border-color .2s, box-shadow .2s" style-hover="border-color:#CFC6D2"><input required type="{{ pwType }}" value="{{ pw }}" onChange="{{ setPw }}" placeholder="At least 8 characters" style="flex:1; font:15px 'Public Sans',sans-serif; padding:14px 16px; border:0; outline:none; background:transparent; border-radius:14px"><button type="button" onClick="{{ togglePw }}" style="border:0; background:#F5F1F7; font:600 12px 'Public Sans',sans-serif; padding:7px 10px; border-radius:8px; cursor:pointer; color:#4A4050">{{ pwBtn }}</button></span></label>
+<sc-if value="{{ isSignup }}" hint-placeholder-val="{{ false }}"><div style="display:flex; flex-direction:column; gap:6px"><div style="display:grid; grid-template-columns:repeat(4,1fr); gap:6px"><sc-for list="{{ bars }}" as="b" hint-placeholder-count="4"><sc-if value="{{ b.on }}" hint-placeholder-val="{{ false }}"><span style="height:5px; border-radius:99px; background:#D1007C; transition:background .3s"></span></sc-if><sc-if value="{{ b.off }}" hint-placeholder-val="{{ true }}"><span style="height:5px; border-radius:99px; background:#EEE8F0; transition:background .3s"></span></sc-if></sc-for></div><span style="font-size:13px; color:#6B6070">{{ strength }}</span></div></sc-if>
+<button type="submit" style="margin-top:6px; background:#D1007C; color:#fff; border:0; font:600 16px 'Public Sans',sans-serif; padding:16px; border-radius:14px; cursor:pointer; transition:background .2s, transform .2s, box-shadow .2s" style-hover="background:#A8005F; box-shadow:0 12px 26px rgba(209,0,124,.28)" style-active="transform:scale(.98)">{{ cta }}</button>
+</form>
+<span style="font-size:13px; color:#8A7F8E; line-height:1.5">By continuing you agree to our Terms of use and Privacy policy. We process your data in line with POPIA.</span>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+function __hdVals(c, a) {
+  const links = [
+    { label: 'Find jobs', href: 'jobs.html', k: 'jobs' },
+    { label: 'Companies', href: 'companies.html', k: 'companies' },
+    { label: 'Career advice', href: 'career-advice.html', k: 'advice' },
+    { label: 'Success stories', href: 'success-stories.html', k: 'stories' }
+  ].map(l => ({ ...l, on: a === l.k, off: a !== l.k }));
+  const o = !!(c.state && c.state.__hdOpen);
+  return { hdLinks: links, hdOpen: o, hdClosed: !o, hdToggle: () => c.setState({ __hdOpen: !o }) };
+}
+function __ftVals(c) {
+  const s = !!(c.state && c.state.__ftSub);
+  return { ftSubscribed: s, ftNotSubscribed: !s, ftSubscribe: e => { e.preventDefault(); c.setState({ __ftSub: true }); } };
+}
+class Component extends DCLogic {
+  state = { mode: 'login', show: false, pw: '' };
+  renderVals() { return Object.assign(this.__pv(), __hdVals(this, 'none')); }
+  __pv() {
+    const s = this.state, signup = s.mode === 'signup';
+    const pw = s.pw; let sc = 0;
+    if (pw.length >= 8) sc++; if (/[A-Z]/.test(pw)) sc++; if (/\d/.test(pw)) sc++; if (/[^A-Za-z0-9]/.test(pw)) sc++;
+    return {
+      modes: [['login', 'Sign in'], ['signup', 'Create account']].map(([k, label]) => ({ label, on: s.mode === k, off: s.mode !== k, pick: () => this.setState({ mode: k }) })),
+      isSignup: signup, isLogin: !signup,
+      title: signup ? 'Create your free account' : 'Welcome back',
+      sub: signup ? 'Upload your CV and start applying in minutes.' : 'Sign in to see your saved jobs and applications.',
+      cta: signup ? 'Create account' : 'Sign in',
+      pw, setPw: e => this.setState({ pw: e.target.value }),
+      pwType: s.show ? 'text' : 'password', pwBtn: s.show ? 'Hide' : 'Show', togglePw: () => this.setState({ show: !s.show }),
+      bars: [0, 1, 2, 3].map(i => ({ on: i < sc, off: i >= sc })),
+      strength: ['Use 8+ characters with a number and a symbol', 'Weak', 'Okay', 'Good', 'Strong'][sc],
+      submit: e => { e.preventDefault(); window.location.href = 'dashboard.html'; }
+    };
+  }
+}
+</script>
+</body>
+</html>

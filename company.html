@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Takealot careers and jobs | CHOSEN</title>
+<meta name="description" content="Open jobs, benefits and life at Takealot.">
+<link rel="icon" href="assets/img/logo.webp">
+<meta property="og:title" content="Takealot careers and jobs | CHOSEN">
+<meta property="og:description" content="Open jobs, benefits and life at Takealot.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/app.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;500;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#FAF8FB;font-family:'Public Sans',sans-serif;color:#1F1724}a{color:#D1007C;text-decoration:none}a:hover{color:#8B4DFF}</style>
+<script src="assets/js/motion.js"></script>
+<link rel="stylesheet" href="assets/css/responsive.css">
+</helmet>
+<div style="background:#FAF8FB; min-height:100vh">
+<div data-sticky-shadow="" style="background:#1F1724; color:#fff; font-family:'Public Sans',sans-serif; position:sticky; top:0; z-index:40; border-bottom:1px solid rgba(255,255,255,.06); transition:box-shadow .3s">
+<div style="max-width:1240px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; gap:36px; box-sizing:content-box">
+<a href="index.html" style="display:flex; transition:transform .3s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><img src="assets/img/logo.webp" alt="CHOSEN" data-m="logo" style="height:42px"></a>
+<nav data-m="hide-tab" style="display:flex; gap:30px; font-size:15px; flex:1">
+<sc-for list="{{ hdLinks }}" as="l" hint-placeholder-count="3">
+<sc-if value="{{ l.on }}" hint-placeholder-val="{{ false }}"><a href="{{ l.href }}" style="white-space:nowrap; color:#FFFFFF; padding:8px 0; background-image:linear-gradient(#FF0098,#FF0098); background-repeat:no-repeat; background-position:0 100%; background-size:100% 2px">{{ l.label }}</a></sc-if>
+<sc-if value="{{ l.off }}" hint-placeholder-val="{{ true }}"><a href="{{ l.href }}" style="white-space:nowrap; color:#CFC6D2; padding:8px 0; background-image:linear-gradient(#FF0098,#FF0098); background-repeat:no-repeat; background-position:0 100%; background-size:0% 2px; transition:background-size .35s cubic-bezier(.2,.7,.2,1), color .2s" style-hover="color:#FFFFFF; background-size:100% 2px">{{ l.label }}</a></sc-if>
+</sc-for>
+</nav>
+<span data-m="show-tab" style="display:none; flex:1"></span>
+<a data-m="hide-tab" href="post-a-job.html" style="white-space:nowrap; font-size:14px; color:#CFC6D2; transition:color .2s" style-hover="color:#FFFFFF">For employers</a>
+<a data-m="hide-tab" href="sign-in.html" style="white-space:nowrap; font-size:15px; font-weight:600; color:#FFFFFF; padding:10px 6px; transition:color .2s" style-hover="color:#FF6BC1">Sign in</a>
+<a href="profile.html" style="white-space:nowrap; font-size:15px; font-weight:600; background:#FF0098; color:#FFFFFF; padding:11px 20px; border-radius:999px; display:flex; align-items:center; gap:8px; transition:transform .25s cubic-bezier(.2,.7,.2,1), background .2s, box-shadow .25s" style-hover="background:#FF3DB0; transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,0,152,.35)" style-active="transform:scale(.97)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4 M6 10l6-6 6 6 M4 20h16"></path></svg>Upload CV</a>
+<button data-m="show-tab" onClick="{{ hdToggle }}" aria-label="Menu" style="display:none; flex:none; width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.18); background:transparent; color:#fff; align-items:center; justify-content:center; cursor:pointer; transition:background .2s" style-hover="background:rgba(255,255,255,.08)"><sc-if value="{{ hdOpen }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12 M18 6L6 18"></path></svg></sc-if><sc-if value="{{ hdClosed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16 M4 12h16 M4 17h16"></path></svg></sc-if></button>
+</div>
+<sc-if value="{{ hdOpen }}" hint-placeholder-val="{{ false }}"><div data-m="show-tab" data-reveal="" style="display:none; position:absolute; left:0; right:0; top:100%; background:#1F1724; border-top:1px solid rgba(255,255,255,.08); flex-direction:column; padding:8px 20px 24px; box-shadow:0 20px 40px rgba(0,0,0,.35)">
+<sc-for list="{{ hdLinks }}" as="l" hint-placeholder-count="4"><a href="{{ l.href }}" style="color:#FFFFFF; font-size:18px; font-weight:600; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; transition:color .2s, padding .25s" style-hover="color:#FF6BC1; padding-left:10px">{{ l.label }}<span style="color:#FF0098">→</span></a></sc-for>
+<a href="post-a-job.html" style="color:#CFC6D2; font-size:16px; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.08)">For employers</a>
+<a href="sign-in.html" style="margin-top:16px; text-align:center; color:#FFFFFF; font-weight:600; font-size:16px; padding:14px; border-radius:999px; border:1px solid rgba(255,255,255,.25)">Sign in</a>
+</div></sc-if>
+</div>
+<div style="max-width:1240px; margin:0 auto; padding:24px 24px 0; display:flex; flex-direction:column; gap:20px">
+<div data-reveal="" style="position:relative; height:340px; border-radius:28px; overflow:hidden"><img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1400&q=70" alt="Cape Town, home of Takealot" style="width:100%; height:100%; object-fit:cover"><div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(31,23,36,0) 40%, rgba(31,23,36,.5))"></div></div>
+<div data-reveal="" style="display:flex; gap:24px; align-items:center; padding:8px 4px 0; position:relative; flex-wrap:wrap">
+<span data-m="logo-over" style="width:112px; height:112px; flex:none; border-radius:28px; background:#fff; border:1px solid #EEE8F0; display:grid; place-items:center; box-shadow:0 10px 26px rgba(31,23,36,.08); overflow:hidden; transition:transform .3s cubic-bezier(.2,.7,.2,1)" style-hover="transform:rotate(-4deg) scale(1.04)"><img src="https://www.google.com/s2/favicons?domain=takealot.com&sz=128" alt="Takealot logo" style="width:64%; height:64%; object-fit:contain"></span>
+<div style="flex:1; min-width:300px; display:flex; flex-direction:column; gap:8px">
+<div style="display:flex; gap:10px; align-items:center"><h1 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:46px; letter-spacing:-.03em; line-height:1">Takealot</h1><span style="font-size:12px; background:#E3FAEF; color:#0E8A55; padding:4px 9px; border-radius:999px; font-weight:600">✓ Verified</span></div>
+<div style="display:flex; flex-wrap:wrap; gap:14px; font-size:15px; color:#6B6070"><span>E-commerce</span><span>·</span><span>Cape Town, Western Cape</span><span>·</span><span>5 000+ employees</span><span>·</span><span>★ 4.7 from 96 reviews</span></div>
+</div>
+<div style="display:flex; gap:10px">
+<sc-if value="{{ following }}" hint-placeholder-val="{{ false }}"><button onClick="{{ toggleFollow }}" style="border:0; background:#1F1724; color:#fff; font:600 15px 'Public Sans',sans-serif; padding:13px 22px; border-radius:999px; cursor:pointer">✓ Following</button></sc-if>
+<sc-if value="{{ notFollowing }}" hint-placeholder-val="{{ true }}"><button onClick="{{ toggleFollow }}" style="border:1px solid #E2D9E6; background:#fff; color:#1F1724; font:600 15px 'Public Sans',sans-serif; padding:13px 22px; border-radius:999px; cursor:pointer; transition:border-color .2s" style-hover="border-color:#FF0098">+ Follow</button></sc-if>
+<a href="jobs.html" style="background:#D1007C; color:#fff; font-weight:600; font-size:15px; padding:13px 24px; border-radius:999px; transition:background .2s, transform .2s" style-hover="background:#A8005F; transform:translateY(-2px); color:#fff">See 14 open jobs</a>
+</div>
+</div>
+<div style="display:flex; gap:28px; border-bottom:1px solid #EEE8F0; padding:0 32px; margin-top:12px">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+<sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}"><button style="border:0; background:none; font:600 16px 'Public Sans',sans-serif; padding:14px 0; color:#1F1724; box-shadow:inset 0 -3px 0 #FF0098; cursor:pointer">{{ t.label }}</button></sc-if>
+<sc-if value="{{ t.off }}" hint-placeholder-val="{{ true }}"><button onClick="{{ t.pick }}" style="border:0; background:none; font:500 16px 'Public Sans',sans-serif; padding:14px 0; color:#6B6070; cursor:pointer; transition:color .2s" style-hover="color:#1F1724">{{ t.label }}</button></sc-if>
+</sc-for>
+</div>
+</div>
+<div style="max-width:1240px; margin:0 auto; padding:40px 24px 96px">
+<sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:48px; align-items:start">
+<div style="display:flex; flex-direction:column; gap:44px">
+<section data-reveal="" style="display:flex; flex-direction:column; gap:14px; font-size:17px; line-height:1.7; color:#3A3040"><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:30px; color:#1F1724">About Takealot</h2><p style="margin:0">Takealot is one of South Africa’s largest online retailers, selling everything from electronics to groceries and delivering to every province. The technology, operations and customer teams are based in Cape Town, with distribution centres in Gauteng, KwaZulu-Natal and the Western Cape.</p><p style="margin:0">We hire graduates and experienced people across engineering, data, logistics and customer service. New joiners get a mentor, a learning budget and clear growth paths.</p></section>
+<section data-reveal="" data-stagger="" style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px"><sc-for list="{{ stats }}" as="s" hint-placeholder-count="4"><div style="background:#fff; border:1px solid #EEE8F0; border-radius:18px; padding:20px; display:flex; flex-direction:column; gap:4px"><span data-count="" style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:34px; color:#D1007C">{{ s.v }}</span><span style="font-size:14px; color:#6B6070">{{ s.l }}</span></div></sc-for></section>
+<section data-reveal="" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); grid-auto-rows:200px; gap:12px">
+<div data-zoom="" style="grid-column:span 2; grid-row:span 2; border-radius:22px; overflow:hidden"><img src="https://images.unsplash.com/photo-1573164574397-dd250bc8a598?auto=format&fit=crop&w=900&q=70" alt="Design review" style="width:100%; height:100%; object-fit:cover"></div>
+<div data-zoom="" style="border-radius:22px; overflow:hidden"><img src="https://images.unsplash.com/photo-1598507756215-1f0e0c033aa2?auto=format&fit=crop&w=500&q=70" alt="Product designer" style="width:100%; height:100%; object-fit:cover"></div>
+<div data-zoom="" style="border-radius:22px; overflow:hidden"><img src="https://images.unsplash.com/photo-1622295023576-e4fb6e9e8ba2?auto=format&fit=crop&w=500&q=70" alt="Engineer coding" style="width:100%; height:100%; object-fit:cover"></div>
+</section>
+<section data-reveal="" style="display:flex; flex-direction:column; gap:16px"><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:30px">Benefits</h2><div style="display:flex; flex-wrap:wrap; gap:10px"><sc-for list="{{ perks }}" as="p" hint-placeholder-count="8"><span style="font-size:15px; background:#fff; border:1px solid #EEE8F0; padding:10px 16px; border-radius:999px; transition:background .2s, color .2s, border-color .2s; cursor:default" style-hover="background:#1F1724; color:#fff; border-color:#1F1724">{{ p }}</span></sc-for></div></section>
+<section data-reveal="" style="display:flex; flex-direction:column; gap:16px"><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:30px">What the team says</h2>
+<div data-stagger="" data-reveal="" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px"><sc-for list="{{ voices }}" as="v" hint-placeholder-count="2"><div style="background:#fff; border:1px solid #EEE8F0; border-radius:22px; padding:24px; display:flex; flex-direction:column; gap:18px"><p style="margin:0; font-size:17px; line-height:1.55">“{{ v.q }}”</p><div style="display:flex; gap:12px; align-items:center"><img src="{{ v.img }}" alt="{{ v.name }}" style="width:48px; height:48px; border-radius:50%; object-fit:cover"><div style="display:flex; flex-direction:column"><span style="font-weight:600">{{ v.name }}</span><span style="font-size:14px; color:#6B6070">{{ v.role }}</span></div></div></div></sc-for></div></section>
+</div>
+<aside style="display:flex; flex-direction:column; gap:16px; position:sticky; top:100px">
+<div data-reveal="" style="background:#fff; border:1px solid #EEE8F0; border-radius:24px; padding:22px; display:flex; flex-direction:column; gap:4px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:20px; padding-bottom:8px">Latest jobs</span>
+<sc-for list="{{ jobs3 }}" as="j" hint-placeholder-count="3"><a href="job.html" style="display:flex; justify-content:space-between; gap:12px; padding:12px; margin:0 -12px; border-radius:12px; color:#1F1724; transition:background .2s" style-hover="background:#FAF5FA"><div style="display:flex; flex-direction:column; gap:2px"><span style="font-weight:600">{{ j.t }}</span><span style="font-size:13px; color:#6B6070">{{ j.m }}</span></div><span style="font-size:14px; font-weight:600; color:#A8005F; white-space:nowrap">{{ j.p }}</span></a></sc-for>
+<button onClick="{{ showJobs }}" style="margin-top:8px; border:1px solid #E2D9E6; background:#fff; font:600 14px 'Public Sans',sans-serif; padding:11px; border-radius:999px; cursor:pointer; color:#1F1724; transition:border-color .2s" style-hover="border-color:#1F1724">View all 14 jobs</button></div>
+<div data-reveal="" style="background:#1F1724; color:#fff; border-radius:24px; padding:22px; display:flex; flex-direction:column; gap:12px; font-size:14px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:20px">Company details</span><div style="display:flex; justify-content:space-between; border-bottom:1px solid #3A3240; padding-bottom:10px"><span style="color:#A79DAA">Founded</span><span>2012</span></div><div style="display:flex; justify-content:space-between; border-bottom:1px solid #3A3240; padding-bottom:10px"><span style="color:#A79DAA">Head office</span><span>Woodstock, Cape Town</span></div><div style="display:flex; justify-content:space-between; border-bottom:1px solid #3A3240; padding-bottom:10px"><span style="color:#A79DAA">B-BBEE</span><span>Level 2</span></div><div style="display:flex; justify-content:space-between"><span style="color:#A79DAA">Website</span><span style="color:#FF6BC1">takealot.com</span></div></div>
+</aside>
+</div>
+</sc-if>
+<sc-if value="{{ isJobs }}" hint-placeholder-val="{{ false }}">
+<div data-reveal="" data-stagger="" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px"><sc-for list="{{ jobs }}" as="j" hint-placeholder-count="6"><a href="job.html" style="background:#fff; border:1px solid #EEE8F0; border-radius:20px; padding:22px; display:flex; justify-content:space-between; gap:16px; color:#1F1724; transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .3s" style-hover="transform:translateY(-3px); box-shadow:0 16px 36px rgba(31,23,36,.08); border-color:#E2D3F5"><div style="display:flex; flex-direction:column; gap:6px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:20px">{{ j.t }}</span><span style="font-size:14px; color:#6B6070">{{ j.m }}</span></div><span style="font-family:'Urbanist',sans-serif; font-weight:700; color:#A8005F; white-space:nowrap">{{ j.p }}</span></a></sc-for></div>
+</sc-if>
+<sc-if value="{{ isLife }}" hint-placeholder-val="{{ false }}">
+<div data-reveal="" data-stagger="" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); grid-auto-rows:260px; gap:14px">
+<sc-for list="{{ gallery }}" as="g" hint-placeholder-count="6"><div data-zoom="" style="border-radius:22px; overflow:hidden; position:relative"><img src="{{ g.img }}" alt="{{ g.cap }}" style="width:100%; height:100%; object-fit:cover"><span style="position:absolute; left:14px; bottom:14px; background:rgba(255,255,255,.92); font-size:13px; font-weight:600; padding:6px 12px; border-radius:999px">{{ g.cap }}</span></div></sc-for>
+</div>
+</sc-if>
+</div>
+<div style="background:#1F1724; color:#F5F0F4; font-family:'Public Sans',sans-serif; overflow:hidden">
+<div style="max-width:1240px; margin:0 auto; padding:72px 24px 0; display:flex; flex-direction:column; gap:48px; box-sizing:content-box">
+<div style="display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:end; padding-bottom:48px; border-bottom:1px solid #352C3A">
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-size:13px; font-weight:600; color:#FF0098; letter-spacing:.08em; text-transform:uppercase">Job alerts</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:300; font-size:44px; line-height:1.05; letter-spacing:-.02em">Get new jobs in your inbox <span style="font-weight:700">before anyone else.</span></h2></div>
+<div style="display:flex; flex-direction:column; gap:10px">
+<sc-if value="{{ ftSubscribed }}" hint-placeholder-val="{{ false }}"><div style="background:#2A2230; border:1px solid #3A3240; border-radius:999px; padding:16px 22px; font-size:15px; color:#F5F0F4">You’re subscribed. Watch your inbox for new jobs.</div></sc-if>
+<sc-if value="{{ ftNotSubscribed }}" hint-placeholder-val="{{ true }}"><form onSubmit="{{ ftSubscribe }}" style="display:flex; gap:8px; background:#2A2230; border:1px solid #3A3240; border-radius:999px; padding:6px 6px 6px 22px; align-items:center"><input type="email" required placeholder="Your email address" style="flex:1; background:transparent; border:0; outline:none; color:#F5F0F4; font:15px 'Public Sans',sans-serif"><button type="submit" style="background:#FF0098; color:#FFFFFF; font:600 15px 'Public Sans',sans-serif; padding:12px 24px; border-radius:999px; border:0; cursor:pointer; transition:background .2s, transform .2s" style-hover="background:#FF3DB0" style-active="transform:scale(.96)">Subscribe</button></form></sc-if>
+<span style="font-size:13px; color:#A79DAA; padding-left:22px">Weekly, no spam. Unsubscribe anytime.</span></div>
+</div>
+<div data-reveal="" data-stagger="" style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1.2fr; gap:32px; font-size:14px">
+<div style="display:flex; flex-direction:column; gap:16px"><a href="index.html" style="display:flex"><img src="assets/img/logo.webp" alt="CHOSEN" style="height:48px"></a><span style="color:#B9AFBC; line-height:1.6; max-width:260px">South Africa’s job site for job seekers. Verified employers and real salaries.</span>
+<div style="display:flex; gap:8px"><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"></path></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22z"></path></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path></svg></span></div></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Job seekers</span><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Find jobs</a><a href="profile.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Upload CV</a><a href="dashboard.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Job alerts</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Graduate jobs</a><a href="career-advice.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Career advice</a></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Jobs by city</span><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Johannesburg</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Cape Town</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Durban</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Pretoria</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Gqeberha</a></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Company</span><a href="about.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">About us</a><a href="post-a-job.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Post a job</a><a href="companies.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Companies</a><a href="success-stories.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Success stories</a><a href="faq.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">FAQ</a><a href="about.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Contact</a></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Get in touch</span><span style="color:#B9AFBC">hello@chosen.co.za</span><span style="color:#B9AFBC">+27 10 000 0000</span><span style="color:#B9AFBC; line-height:1.6">Sandton, Johannesburg<br>Gauteng, South Africa</span>
+<div style="display:flex; flex-direction:column; align-items:flex-start; gap:8px; padding-top:6px"><span style="display:flex; align-items:center; gap:10px; white-space:nowrap; min-width:156px; box-sizing:border-box; border:1px solid #3A3240; background:#2A2230; color:#F5F0F4; padding:7px 12px; border-radius:10px; cursor:pointer; transition:border-color .2s, transform .25s" style-hover="border-color:#FF0098; transform:translateY(-2px)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"></path></svg><span style="display:flex; flex-direction:column"><span style="font-size:10px; color:#A79DAA">Download on the</span><span style="font-weight:600; font-size:13px">App Store</span></span></span><span style="display:flex; align-items:center; gap:10px; white-space:nowrap; min-width:156px; box-sizing:border-box; border:1px solid #3A3240; background:#2A2230; color:#F5F0F4; padding:7px 12px; border-radius:10px; cursor:pointer; transition:border-color .2s, transform .25s" style-hover="border-color:#FF0098; transform:translateY(-2px)"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#00D7FE" d="M1.34.92a1.5 1.5 0 0 0-.12.57v21.02c0 .22.05.42.13.6l11.15-11.09z"></path><path fill="#FFCE00" d="M22.02 13.3l-3.92 2.22-3.51-3.5 3.54-3.52 3.89 2.2a1.49 1.49 0 0 1 0 2.6z"></path><path fill="#00F076" d="M13.54 10.99l3.26-3.24L3.45.2a1.47 1.47 0 0 0-.95-.18z"></path><path fill="#FF3A44" d="M13.54 13.06l-11 10.93c.3.04.61-.02.91-.18l13.32-7.54z"></path></svg><span style="display:flex; flex-direction:column"><span style="font-size:10px; color:#A79DAA">Get it on</span><span style="font-weight:600; font-size:13px">Google Play</span></span></span></div></div>
+</div>
+<div style="display:flex; justify-content:space-between; align-items:center; gap:24px; padding:20px 0; border-top:1px solid #352C3A; font-size:13px; color:#A79DAA"><span>© 2026 CHOSEN. All rights reserved.</span><div style="display:flex; gap:20px; flex:none; white-space:nowrap"><a href="faq.html" style="color:#A79DAA" style-hover="color:#FFFFFF">FAQ</a><span>Privacy policy</span><span>POPIA</span><span>Terms of use</span><span>Cookies</span></div></div>
+<div data-reveal="" style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:290px; line-height:.72; letter-spacing:-.04em; text-align:center; background:linear-gradient(90deg,#FF0098,#8B4DFF); -webkit-background-clip:text; background-clip:text; color:transparent; opacity:.9; margin:0 -20px -10px">CHOSEN</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+function __hdVals(c, a) {
+  const links = [
+    { label: 'Find jobs', href: 'jobs.html', k: 'jobs' },
+    { label: 'Companies', href: 'companies.html', k: 'companies' },
+    { label: 'Career advice', href: 'career-advice.html', k: 'advice' },
+    { label: 'Success stories', href: 'success-stories.html', k: 'stories' }
+  ].map(l => ({ ...l, on: a === l.k, off: a !== l.k }));
+  const o = !!(c.state && c.state.__hdOpen);
+  return { hdLinks: links, hdOpen: o, hdClosed: !o, hdToggle: () => c.setState({ __hdOpen: !o }) };
+}
+function __ftVals(c) {
+  const s = !!(c.state && c.state.__ftSub);
+  return { ftSubscribed: s, ftNotSubscribed: !s, ftSubscribe: e => { e.preventDefault(); c.setState({ __ftSub: true }); } };
+}
+const U = (id, w = 700) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
+class Component extends DCLogic {
+  state = { tab: 'Overview', follow: false };
+  renderVals() { return Object.assign(this.__pv(), __hdVals(this, 'companies'), __ftVals(this)); }
+  __pv() {
+    const s = this.state;
+    const jobs = [
+      { t: 'UX Designer', m: 'Contract · Remote', p: 'R 52 000 pm' }, { t: 'DevOps Engineer', m: 'Full-time · Hybrid, Johannesburg', p: 'R 65 000 pm' },
+      { t: 'Frontend Developer', m: 'Full-time · Remote', p: 'R 55 000 – R 70 000 pm' }, { t: 'Customer Success Lead', m: 'Full-time · Remote', p: 'R 38 000 pm' },
+      { t: 'QA Engineer', m: 'Full-time · Cape Town', p: 'R 42 000 pm' }, { t: 'Graduate Developer', m: 'Graduate · Cape Town', p: 'R 22 000 pm' }
+    ];
+    return {
+      following: s.follow, notFollowing: !s.follow, toggleFollow: () => this.setState({ follow: !s.follow }),
+      tabs: ['Overview', 'Jobs (14)', 'Life at Takealot'].map((l, i) => { const k = ['Overview', 'Jobs', 'Life'][i]; return { label: l, on: s.tab === k, off: s.tab !== k, pick: () => this.setState({ tab: k }) }; }),
+      isOverview: s.tab === 'Overview', isJobs: s.tab === 'Jobs', isLife: s.tab === 'Life',
+      showJobs: () => this.setState({ tab: 'Jobs' }),
+      stats: [{ v: '5 000', l: 'employees' }, { v: '9', l: 'provinces delivered to' }, { v: '42', l: 'hires this year' }, { v: '94%', l: 'would recommend' }],
+      perks: ['Medical aid', 'Remote-first', 'R 25 000 learning budget', 'Home office allowance', 'Mentorship', 'Parental leave, 6 months', 'Fibre stipend', 'Friday afternoons for side projects'],
+      voices: [
+        { q: 'I joined as a graduate two years ago. I now lead a team of four and still get a mentor every quarter.', name: 'Naledi Mahlangu', role: 'Engineering Lead', img: U('1598507756215-1f0e0c033aa2', 160) },
+        { q: 'Remote-first actually means remote-first here. I work from Gqeberha and never feel left out.', name: 'Ayanda Nkosi', role: 'Product Designer', img: U('1616581191537-ed7d8dd3a521', 160) }
+      ],
+      jobs3: jobs.slice(0, 3), jobs,
+      gallery: [
+        { img: U('1573164574397-dd250bc8a598'), cap: 'Design review' }, { img: U('1580060839134-75a5edca2e99'), cap: 'Our view of Cape Town' },
+        { img: U('1622295023576-e4fb6e9e8ba2'), cap: 'Build week' }, { img: U('1598507756215-1f0e0c033aa2'), cap: 'Naledi, Engineering Lead' },
+        { img: U('1573164574511-73c773193279'), cap: 'Quarterly planning' }, { img: U('1591742708307-ce49d19450d4'), cap: 'Team day at the waterfront' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

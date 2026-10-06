@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Companies hiring in South Africa | CHOSEN</title>
+<meta name="description" content="Discover verified employers, their open jobs and benefits.">
+<link rel="icon" href="assets/img/logo.webp">
+<meta property="og:title" content="Companies hiring in South Africa | CHOSEN">
+<meta property="og:description" content="Discover verified employers, their open jobs and benefits.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/app.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;500;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#FAF8FB;font-family:'Public Sans',sans-serif;color:#1F1724}a{color:#D1007C;text-decoration:none}a:hover{color:#8B4DFF}input::placeholder{color:#8A7F8E}</style>
+<script src="assets/js/motion.js"></script>
+<link rel="stylesheet" href="assets/css/responsive.css">
+</helmet>
+<div style="background:#FAF8FB; min-height:100vh">
+<div data-sticky-shadow="" style="background:#1F1724; color:#fff; font-family:'Public Sans',sans-serif; position:sticky; top:0; z-index:40; border-bottom:1px solid rgba(255,255,255,.06); transition:box-shadow .3s">
+<div style="max-width:1240px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; gap:36px; box-sizing:content-box">
+<a href="index.html" style="display:flex; transition:transform .3s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><img src="assets/img/logo.webp" alt="CHOSEN" data-m="logo" style="height:42px"></a>
+<nav data-m="hide-tab" style="display:flex; gap:30px; font-size:15px; flex:1">
+<sc-for list="{{ hdLinks }}" as="l" hint-placeholder-count="3">
+<sc-if value="{{ l.on }}" hint-placeholder-val="{{ false }}"><a href="{{ l.href }}" style="white-space:nowrap; color:#FFFFFF; padding:8px 0; background-image:linear-gradient(#FF0098,#FF0098); background-repeat:no-repeat; background-position:0 100%; background-size:100% 2px">{{ l.label }}</a></sc-if>
+<sc-if value="{{ l.off }}" hint-placeholder-val="{{ true }}"><a href="{{ l.href }}" style="white-space:nowrap; color:#CFC6D2; padding:8px 0; background-image:linear-gradient(#FF0098,#FF0098); background-repeat:no-repeat; background-position:0 100%; background-size:0% 2px; transition:background-size .35s cubic-bezier(.2,.7,.2,1), color .2s" style-hover="color:#FFFFFF; background-size:100% 2px">{{ l.label }}</a></sc-if>
+</sc-for>
+</nav>
+<span data-m="show-tab" style="display:none; flex:1"></span>
+<a data-m="hide-tab" href="post-a-job.html" style="white-space:nowrap; font-size:14px; color:#CFC6D2; transition:color .2s" style-hover="color:#FFFFFF">For employers</a>
+<a data-m="hide-tab" href="sign-in.html" style="white-space:nowrap; font-size:15px; font-weight:600; color:#FFFFFF; padding:10px 6px; transition:color .2s" style-hover="color:#FF6BC1">Sign in</a>
+<a href="profile.html" style="white-space:nowrap; font-size:15px; font-weight:600; background:#FF0098; color:#FFFFFF; padding:11px 20px; border-radius:999px; display:flex; align-items:center; gap:8px; transition:transform .25s cubic-bezier(.2,.7,.2,1), background .2s, box-shadow .25s" style-hover="background:#FF3DB0; transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,0,152,.35)" style-active="transform:scale(.97)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4 M6 10l6-6 6 6 M4 20h16"></path></svg>Upload CV</a>
+<button data-m="show-tab" onClick="{{ hdToggle }}" aria-label="Menu" style="display:none; flex:none; width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.18); background:transparent; color:#fff; align-items:center; justify-content:center; cursor:pointer; transition:background .2s" style-hover="background:rgba(255,255,255,.08)"><sc-if value="{{ hdOpen }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12 M18 6L6 18"></path></svg></sc-if><sc-if value="{{ hdClosed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16 M4 12h16 M4 17h16"></path></svg></sc-if></button>
+</div>
+<sc-if value="{{ hdOpen }}" hint-placeholder-val="{{ false }}"><div data-m="show-tab" data-reveal="" style="display:none; position:absolute; left:0; right:0; top:100%; background:#1F1724; border-top:1px solid rgba(255,255,255,.08); flex-direction:column; padding:8px 20px 24px; box-shadow:0 20px 40px rgba(0,0,0,.35)">
+<sc-for list="{{ hdLinks }}" as="l" hint-placeholder-count="4"><a href="{{ l.href }}" style="color:#FFFFFF; font-size:18px; font-weight:600; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; transition:color .2s, padding .25s" style-hover="color:#FF6BC1; padding-left:10px">{{ l.label }}<span style="color:#FF0098">→</span></a></sc-for>
+<a href="post-a-job.html" style="color:#CFC6D2; font-size:16px; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.08)">For employers</a>
+<a href="sign-in.html" style="margin-top:16px; text-align:center; color:#FFFFFF; font-weight:600; font-size:16px; padding:14px; border-radius:999px; border:1px solid rgba(255,255,255,.25)">Sign in</a>
+</div></sc-if>
+</div>
+<div style="background:#1F1724; color:#fff">
+<div style="max-width:1240px; margin:0 auto; padding:48px 24px 64px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:48px; align-items:center">
+<div data-reveal="" data-stagger="" style="display:flex; flex-direction:column; gap:20px">
+<span style="font:500 12px 'IBM Plex Mono',monospace; color:#FF6BC1; letter-spacing:.08em; text-transform:uppercase">3 800 verified employers</span>
+<h1 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:300; font-size:60px; letter-spacing:-.03em; line-height:1">Find a company <span style="font-weight:700">worth working for</span></h1>
+<p style="margin:0; font-size:18px; color:#CFC6D2; line-height:1.55; max-width:480px">See open jobs, benefits and photos from inside South African workplaces before you apply.</p>
+<label style="background:#fff; border-radius:16px; padding:6px 6px 6px 18px; display:flex; gap:10px; align-items:center; max-width:520px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B4DFF" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input value="{{ q }}" onChange="{{ setQ }}" placeholder="Search companies" style="flex:1; border:0; outline:none; font:16px 'Public Sans',sans-serif; padding:12px 0; color:#1F1724"><span style="background:#D1007C; color:#fff; font-weight:600; padding:12px 22px; border-radius:12px">Search</span></label>
+</div>
+<div data-mk="" data-m="one-img" data-reveal="150" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; height:380px">
+<div data-zoom="" style="border-radius:22px; overflow:hidden; grid-row:span 2"><img src="https://images.unsplash.com/photo-1573164574397-dd250bc8a598?auto=format&fit=crop&w=600&q=70" alt="Team at Takealot" style="width:100%; height:100%; object-fit:cover"></div>
+<div data-zoom="" style="border-radius:22px; overflow:hidden"><img src="https://images.unsplash.com/photo-1666866834805-8cc91d4774ac?auto=format&fit=crop&w=600&q=70" alt="Manager at Standard Bank" style="width:100%; height:100%; object-fit:cover"></div>
+<div data-zoom="" style="border-radius:22px; overflow:hidden"><img src="https://images.unsplash.com/photo-1577948000111-9c970dfe3743?auto=format&fit=crop&w=600&q=70" alt="Johannesburg" style="width:100%; height:100%; object-fit:cover"></div>
+</div>
+</div>
+</div>
+<div style="max-width:1240px; margin:0 auto; padding:40px 24px 96px; display:flex; flex-direction:column; gap:28px">
+<div data-m="scrollx" data-reveal="" style="display:flex; gap:8px; flex-wrap:wrap">
+<sc-for list="{{ inds }}" as="i" hint-placeholder-count="7">
+<sc-if value="{{ i.on }}" hint-placeholder-val="{{ false }}"><button style="border:1px solid #1F1724; background:#1F1724; color:#fff; font:600 14px 'Public Sans',sans-serif; padding:10px 18px; border-radius:999px; cursor:pointer">{{ i.label }}</button></sc-if>
+<sc-if value="{{ i.off }}" hint-placeholder-val="{{ true }}"><button onClick="{{ i.pick }}" style="border:1px solid #E2D9E6; background:#fff; color:#1F1724; font:500 14px 'Public Sans',sans-serif; padding:10px 18px; border-radius:999px; cursor:pointer; transition:border-color .2s, transform .2s" style-hover="border-color:#1F1724; transform:translateY(-2px)">{{ i.label }}</button></sc-if>
+</sc-for>
+</div>
+<div data-reveal="" data-stagger="" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px">
+<sc-for list="{{ companies }}" as="c" hint-placeholder-count="6">
+<div data-zoom="" style="background:#fff; border:1px solid #EEE8F0; border-radius:24px; overflow:hidden; display:flex; flex-direction:column; transition:box-shadow .3s, transform .3s cubic-bezier(.2,.7,.2,1)" style-hover="box-shadow:0 20px 44px rgba(31,23,36,.1); transform:translateY(-4px)">
+<a href="company.html" style="height:170px; overflow:hidden; display:block"><img src="{{ c.img }}" alt="{{ c.name }}" style="width:100%; height:100%; object-fit:cover; display:block"></a>
+<div style="padding:0 22px 22px; display:flex; flex-direction:column; gap:14px">
+<div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:-30px"><span style="width:64px; height:64px; border-radius:18px; background:#fff; border:4px solid #fff; box-shadow:0 6px 18px rgba(31,23,36,.12); display:grid; place-items:center; position:relative; overflow:hidden"><span style="position:absolute; inset:0; display:grid; place-items:center; font:700 20px 'Urbanist',sans-serif; color:#A8005F">{{ c.ini }}</span><img src="{{ c.logo }}" alt="{{ c.name }} logo" onLoad="{{ logoCheck }}" style="position:relative; width:70%; height:70%; object-fit:contain; background:#fff"></span>
+<sc-if value="{{ c.following }}" hint-placeholder-val="{{ false }}"><button onClick="{{ c.toggle }}" style="border:0; background:#1F1724; color:#fff; font:600 13px 'Public Sans',sans-serif; padding:8px 14px; border-radius:999px; cursor:pointer">✓ Following</button></sc-if>
+<sc-if value="{{ c.notFollowing }}" hint-placeholder-val="{{ true }}"><button onClick="{{ c.toggle }}" style="border:1px solid #E2D9E6; background:#fff; color:#1F1724; font:600 13px 'Public Sans',sans-serif; padding:8px 14px; border-radius:999px; cursor:pointer; transition:border-color .2s" style-hover="border-color:#FF0098">+ Follow</button></sc-if>
+</div>
+<a href="company.html" style="display:flex; flex-direction:column; gap:4px; color:#1F1724"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:21px">{{ c.name }}</span><span style="font-size:14px; color:#6B6070">{{ c.ind }} · {{ c.city }}</span></a>
+<div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #F3EEF4; padding-top:14px"><span style="font-size:14px; color:#6B6070">★ <b style="color:#1F1724">{{ c.rating }}</b> · {{ c.size }}</span><a href="jobs.html" style="font-size:14px; font-weight:600">{{ c.jobs }} jobs →</a></div>
+</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ none }}" hint-placeholder-val="{{ false }}"><div style="padding:56px; text-align:center; color:#6B6070; background:#fff; border:1px dashed #E2D9E6; border-radius:20px">No companies match your search.</div></sc-if>
+<div data-reveal="" style="background:#FFE6F4; border-radius:28px; padding:44px 48px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:24px; align-items:center">
+<div style="display:flex; flex-direction:column; gap:8px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:32px; letter-spacing:-.02em">Hiring? Put your company in front of 1.2 million job seekers.</span><span style="font-size:16px; color:#6B6070">Create a free company page and post your first job today.</span></div>
+<a href="post-a-job.html" style="background:#1F1724; color:#fff; font-weight:600; padding:15px 26px; border-radius:999px; white-space:nowrap; transition:transform .2s, background .2s" style-hover="transform:translateY(-2px); background:#000; color:#fff">Post a job</a>
+</div>
+</div>
+<div style="background:#1F1724; color:#F5F0F4; font-family:'Public Sans',sans-serif; overflow:hidden">
+<div style="max-width:1240px; margin:0 auto; padding:72px 24px 0; display:flex; flex-direction:column; gap:48px; box-sizing:content-box">
+<div style="display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:end; padding-bottom:48px; border-bottom:1px solid #352C3A">
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-size:13px; font-weight:600; color:#FF0098; letter-spacing:.08em; text-transform:uppercase">Job alerts</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:300; font-size:44px; line-height:1.05; letter-spacing:-.02em">Get new jobs in your inbox <span style="font-weight:700">before anyone else.</span></h2></div>
+<div style="display:flex; flex-direction:column; gap:10px">
+<sc-if value="{{ ftSubscribed }}" hint-placeholder-val="{{ false }}"><div style="background:#2A2230; border:1px solid #3A3240; border-radius:999px; padding:16px 22px; font-size:15px; color:#F5F0F4">You’re subscribed. Watch your inbox for new jobs.</div></sc-if>
+<sc-if value="{{ ftNotSubscribed }}" hint-placeholder-val="{{ true }}"><form onSubmit="{{ ftSubscribe }}" style="display:flex; gap:8px; background:#2A2230; border:1px solid #3A3240; border-radius:999px; padding:6px 6px 6px 22px; align-items:center"><input type="email" required placeholder="Your email address" style="flex:1; background:transparent; border:0; outline:none; color:#F5F0F4; font:15px 'Public Sans',sans-serif"><button type="submit" style="background:#FF0098; color:#FFFFFF; font:600 15px 'Public Sans',sans-serif; padding:12px 24px; border-radius:999px; border:0; cursor:pointer; transition:background .2s, transform .2s" style-hover="background:#FF3DB0" style-active="transform:scale(.96)">Subscribe</button></form></sc-if>
+<span style="font-size:13px; color:#A79DAA; padding-left:22px">Weekly, no spam. Unsubscribe anytime.</span></div>
+</div>
+<div data-reveal="" data-stagger="" style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1.2fr; gap:32px; font-size:14px">
+<div style="display:flex; flex-direction:column; gap:16px"><a href="index.html" style="display:flex"><img src="assets/img/logo.webp" alt="CHOSEN" style="height:48px"></a><span style="color:#B9AFBC; line-height:1.6; max-width:260px">South Africa’s job site for job seekers. Verified employers and real salaries.</span>
+<div style="display:flex; gap:8px"><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"></path></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22z"></path></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path></svg></span></div></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Job seekers</span><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Find jobs</a><a href="profile.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Upload CV</a><a href="dashboard.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Job alerts</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Graduate jobs</a><a href="career-advice.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Career advice</a></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Jobs by city</span><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Johannesburg</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Cape Town</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Durban</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Pretoria</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Gqeberha</a></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Company</span><a href="about.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">About us</a><a href="post-a-job.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Post a job</a><a href="companies.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Companies</a><a href="success-stories.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Success stories</a><a href="faq.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">FAQ</a><a href="about.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Contact</a></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Get in touch</span><span style="color:#B9AFBC">hello@chosen.co.za</span><span style="color:#B9AFBC">+27 10 000 0000</span><span style="color:#B9AFBC; line-height:1.6">Sandton, Johannesburg<br>Gauteng, South Africa</span>
+<div style="display:flex; flex-direction:column; align-items:flex-start; gap:8px; padding-top:6px"><span style="display:flex; align-items:center; gap:10px; white-space:nowrap; min-width:156px; box-sizing:border-box; border:1px solid #3A3240; background:#2A2230; color:#F5F0F4; padding:7px 12px; border-radius:10px; cursor:pointer; transition:border-color .2s, transform .25s" style-hover="border-color:#FF0098; transform:translateY(-2px)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"></path></svg><span style="display:flex; flex-direction:column"><span style="font-size:10px; color:#A79DAA">Download on the</span><span style="font-weight:600; font-size:13px">App Store</span></span></span><span style="display:flex; align-items:center; gap:10px; white-space:nowrap; min-width:156px; box-sizing:border-box; border:1px solid #3A3240; background:#2A2230; color:#F5F0F4; padding:7px 12px; border-radius:10px; cursor:pointer; transition:border-color .2s, transform .25s" style-hover="border-color:#FF0098; transform:translateY(-2px)"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#00D7FE" d="M1.34.92a1.5 1.5 0 0 0-.12.57v21.02c0 .22.05.42.13.6l11.15-11.09z"></path><path fill="#FFCE00" d="M22.02 13.3l-3.92 2.22-3.51-3.5 3.54-3.52 3.89 2.2a1.49 1.49 0 0 1 0 2.6z"></path><path fill="#00F076" d="M13.54 10.99l3.26-3.24L3.45.2a1.47 1.47 0 0 0-.95-.18z"></path><path fill="#FF3A44" d="M13.54 13.06l-11 10.93c.3.04.61-.02.91-.18l13.32-7.54z"></path></svg><span style="display:flex; flex-direction:column"><span style="font-size:10px; color:#A79DAA">Get it on</span><span style="font-weight:600; font-size:13px">Google Play</span></span></span></div></div>
+</div>
+<div style="display:flex; justify-content:space-between; align-items:center; gap:24px; padding:20px 0; border-top:1px solid #352C3A; font-size:13px; color:#A79DAA"><span>© 2026 CHOSEN. All rights reserved.</span><div style="display:flex; gap:20px; flex:none; white-space:nowrap"><a href="faq.html" style="color:#A79DAA" style-hover="color:#FFFFFF">FAQ</a><span>Privacy policy</span><span>POPIA</span><span>Terms of use</span><span>Cookies</span></div></div>
+<div data-reveal="" style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:290px; line-height:.72; letter-spacing:-.04em; text-align:center; background:linear-gradient(90deg,#FF0098,#8B4DFF); -webkit-background-clip:text; background-clip:text; color:transparent; opacity:.9; margin:0 -20px -10px">CHOSEN</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+function __hdVals(c, a) {
+  const links = [
+    { label: 'Find jobs', href: 'jobs.html', k: 'jobs' },
+    { label: 'Companies', href: 'companies.html', k: 'companies' },
+    { label: 'Career advice', href: 'career-advice.html', k: 'advice' },
+    { label: 'Success stories', href: 'success-stories.html', k: 'stories' }
+  ].map(l => ({ ...l, on: a === l.k, off: a !== l.k }));
+  const o = !!(c.state && c.state.__hdOpen);
+  return { hdLinks: links, hdOpen: o, hdClosed: !o, hdToggle: () => c.setState({ __hdOpen: !o }) };
+}
+function __ftVals(c) {
+  const s = !!(c.state && c.state.__ftSub);
+  return { ftSubscribed: s, ftNotSubscribed: !s, ftSubscribe: e => { e.preventDefault(); c.setState({ __ftSub: true }); } };
+}
+const U = (id, w = 700) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
+class Component extends DCLogic {
+  state = { ind: 'All', q: '', follow: { 'Takealot': true } };
+  renderVals() { return Object.assign(this.__pv(), __hdVals(this, 'companies'), __ftVals(this)); }
+  __pv() {
+    const s = this.state;
+    const all = [
+      { name: 'DHL Supply Chain', ini: 'DH', ind: 'Logistics', city: 'Sandton', rating: '4.4', size: '1 200 staff', jobs: 12, img: U('1573164574572-cb89e39749b4') },
+      { name: 'Takealot', ini: 'TA', ind: 'Technology', city: 'Cape Town', rating: '4.7', size: '180 staff', jobs: 14, img: U('1573164574397-dd250bc8a598') },
+      { name: 'Mediclinic', ini: 'MC', ind: 'Healthcare', city: 'Durban', rating: '4.2', size: '3 400 staff', jobs: 31, img: U('1573164573938-c9a3db2e84ff') },
+      { name: 'Standard Bank', ini: 'SB', ind: 'Finance', city: 'Johannesburg', rating: '4.1', size: '900 staff', jobs: 9, img: U('1666866834805-8cc91d4774ac') },
+      { name: 'Tsogo Sun', ini: 'TS', ind: 'Hospitality', city: 'Cape Town', rating: '4.3', size: '650 staff', jobs: 18, img: U('1576485375217-d6a95e34d043') },
+      { name: 'Toyota SA', ini: 'TY', ind: 'Retail', city: 'Pretoria', rating: '3.9', size: '420 staff', jobs: 7, img: U('1622295023825-6e319464b810') },
+      { name: 'Vodacom', ini: 'VC', ind: 'Technology', city: 'Gqeberha', rating: '4.0', size: '1 100 staff', jobs: 22, img: U('1573164574511-73c773193279') },
+      { name: 'Shoprite', ini: 'SR', ind: 'Logistics', city: 'Rustenburg', rating: '4.0', size: '560 staff', jobs: 6, img: U('1552937075-967cf58b74a4') },
+      { name: 'PwC South Africa', ini: 'PW', ind: 'Finance', city: 'Bloemfontein', rating: '4.5', size: '75 staff', jobs: 3, img: U('1622295023876-0cdf583c41f6') }
+    ];
+    const DOM = {"DHL Supply Chain":"dhl.com","Takealot":"takealot.com","Mediclinic":"mediclinic.co.za","Standard Bank":"standardbank.co.za","Tsogo Sun":"tsogosun.com","Toyota SA":"toyota.co.za","Vodacom":"vodacom.com","Shoprite":"shoprite.co.za","PwC South Africa":"pwc.co.za"};
+    all.forEach(c => { c.logo = 'https://www.google.com/s2/favicons?domain=' + DOM[c.name] + '&sz=128'; });
+    const list = all.filter(c => (s.ind === 'All' || c.ind === s.ind) && (!s.q || c.name.toLowerCase().includes(s.q.toLowerCase())));
+    return {
+      q: s.q, setQ: e => this.setState({ q: e.target.value }),
+      inds: ['All', 'Technology', 'Finance', 'Healthcare', 'Logistics', 'Hospitality', 'Retail'].map(l => ({ label: l, on: s.ind === l, off: s.ind !== l, pick: () => this.setState({ ind: l }) })),
+      companies: list.map(c => ({ ...c, following: !!s.follow[c.name], notFollowing: !s.follow[c.name], toggle: () => this.setState(st => ({ follow: { ...st.follow, [c.name]: !st.follow[c.name] } })) })),
+      none: list.length === 0, logoCheck: e => { if (e.target.naturalWidth < 64) e.target.style.display = 'none'; }
+    };
+  }
+}
+</script>
+</body>
+</html>

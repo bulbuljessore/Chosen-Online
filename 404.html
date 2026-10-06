@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Page not found | CHOSEN</title>
+<meta name="description" content="This page could not be found.">
+<link rel="icon" href="assets/img/logo.webp">
+<meta property="og:title" content="Page not found | CHOSEN">
+<meta property="og:description" content="This page could not be found.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/app.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;500;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#1F1724;font-family:'Public Sans',sans-serif;color:#fff}a{color:#FF6BC1;text-decoration:none}a:hover{color:#FFFFFF}input::placeholder{color:#8A7F8E}</style>
+<script src="assets/js/motion.js"></script>
+<link rel="stylesheet" href="assets/css/responsive.css">
+</helmet>
+<div style="background:#1F1724; min-height:100vh; display:flex; flex-direction:column">
+<div data-sticky-shadow="" style="background:#1F1724; color:#fff; font-family:'Public Sans',sans-serif; position:sticky; top:0; z-index:40; border-bottom:1px solid rgba(255,255,255,.06); transition:box-shadow .3s">
+<div style="max-width:1240px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; gap:36px; box-sizing:content-box">
+<a href="index.html" style="display:flex; transition:transform .3s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><img src="assets/img/logo.webp" alt="CHOSEN" data-m="logo" style="height:42px"></a>
+<nav data-m="hide-tab" style="display:flex; gap:30px; font-size:15px; flex:1">
+<sc-for list="{{ hdLinks }}" as="l" hint-placeholder-count="3">
+<sc-if value="{{ l.on }}" hint-placeholder-val="{{ false }}"><a href="{{ l.href }}" style="white-space:nowrap; color:#FFFFFF; padding:8px 0; background-image:linear-gradient(#FF0098,#FF0098); background-repeat:no-repeat; background-position:0 100%; background-size:100% 2px">{{ l.label }}</a></sc-if>
+<sc-if value="{{ l.off }}" hint-placeholder-val="{{ true }}"><a href="{{ l.href }}" style="white-space:nowrap; color:#CFC6D2; padding:8px 0; background-image:linear-gradient(#FF0098,#FF0098); background-repeat:no-repeat; background-position:0 100%; background-size:0% 2px; transition:background-size .35s cubic-bezier(.2,.7,.2,1), color .2s" style-hover="color:#FFFFFF; background-size:100% 2px">{{ l.label }}</a></sc-if>
+</sc-for>
+</nav>
+<span data-m="show-tab" style="display:none; flex:1"></span>
+<a data-m="hide-tab" href="post-a-job.html" style="white-space:nowrap; font-size:14px; color:#CFC6D2; transition:color .2s" style-hover="color:#FFFFFF">For employers</a>
+<a data-m="hide-tab" href="sign-in.html" style="white-space:nowrap; font-size:15px; font-weight:600; color:#FFFFFF; padding:10px 6px; transition:color .2s" style-hover="color:#FF6BC1">Sign in</a>
+<a href="profile.html" style="white-space:nowrap; font-size:15px; font-weight:600; background:#FF0098; color:#FFFFFF; padding:11px 20px; border-radius:999px; display:flex; align-items:center; gap:8px; transition:transform .25s cubic-bezier(.2,.7,.2,1), background .2s, box-shadow .25s" style-hover="background:#FF3DB0; transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,0,152,.35)" style-active="transform:scale(.97)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4 M6 10l6-6 6 6 M4 20h16"></path></svg>Upload CV</a>
+<button data-m="show-tab" onClick="{{ hdToggle }}" aria-label="Menu" style="display:none; flex:none; width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.18); background:transparent; color:#fff; align-items:center; justify-content:center; cursor:pointer; transition:background .2s" style-hover="background:rgba(255,255,255,.08)"><sc-if value="{{ hdOpen }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12 M18 6L6 18"></path></svg></sc-if><sc-if value="{{ hdClosed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16 M4 12h16 M4 17h16"></path></svg></sc-if></button>
+</div>
+<sc-if value="{{ hdOpen }}" hint-placeholder-val="{{ false }}"><div data-m="show-tab" data-reveal="" style="display:none; position:absolute; left:0; right:0; top:100%; background:#1F1724; border-top:1px solid rgba(255,255,255,.08); flex-direction:column; padding:8px 20px 24px; box-shadow:0 20px 40px rgba(0,0,0,.35)">
+<sc-for list="{{ hdLinks }}" as="l" hint-placeholder-count="4"><a href="{{ l.href }}" style="color:#FFFFFF; font-size:18px; font-weight:600; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; transition:color .2s, padding .25s" style-hover="color:#FF6BC1; padding-left:10px">{{ l.label }}<span style="color:#FF0098">→</span></a></sc-for>
+<a href="post-a-job.html" style="color:#CFC6D2; font-size:16px; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.08)">For employers</a>
+<a href="sign-in.html" style="margin-top:16px; text-align:center; color:#FFFFFF; font-weight:600; font-size:16px; padding:14px; border-radius:999px; border:1px solid rgba(255,255,255,.25)">Sign in</a>
+</div></sc-if>
+</div>
+<div style="flex:1; max-width:1240px; width:calc(100% - 48px); margin:0 auto; padding:48px 0 80px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:56px; align-items:center">
+<div data-reveal="" data-stagger="" style="display:flex; flex-direction:column; gap:22px">
+<span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:180px; line-height:.8; letter-spacing:-.05em; background:linear-gradient(90deg,#FF0098,#8B4DFF); -webkit-background-clip:text; background-clip:text; color:transparent">404</span>
+<h1 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:44px; letter-spacing:-.025em; line-height:1.05">This page has been filled.</h1>
+<p style="margin:0; font-size:18px; color:#CFC6D2; line-height:1.55; max-width:460px">The link may be old, or the job may have closed. Try a new search instead.</p>
+<form onSubmit="{{ go }}" style="display:flex; gap:6px; background:#fff; border-radius:16px; padding:6px; max-width:480px"><input placeholder="Search jobs" style="flex:1; border:0; outline:none; font:16px 'Public Sans',sans-serif; padding:12px 14px; color:#1F1724; border-radius:12px"><button type="submit" style="background:#D1007C; color:#fff; border:0; font:600 15px 'Public Sans',sans-serif; padding:0 22px; border-radius:12px; cursor:pointer; transition:background .2s" style-hover="background:#A8005F">Search</button></form>
+<div style="display:flex; gap:8px; flex-wrap:wrap"><sc-for list="{{ links }}" as="l" hint-placeholder-count="4"><a href="{{ l.href }}" style="font-size:14px; color:#E9E1EC; border:1px solid #3A3240; padding:8px 14px; border-radius:999px; transition:background .2s, border-color .2s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF">{{ l.label }}</a></sc-for></div>
+</div>
+<div data-reveal="150" data-tilt="" style="height:520px; border-radius:28px; overflow:hidden; transition:transform .4s"><img src="https://images.unsplash.com/photo-1581006867287-9f90a3f3a8b0?auto=format&fit=crop&w=900&q=70" alt="Johannesburg at night" style="width:100%; height:100%; object-fit:cover"></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+function __hdVals(c, a) {
+  const links = [
+    { label: 'Find jobs', href: 'jobs.html', k: 'jobs' },
+    { label: 'Companies', href: 'companies.html', k: 'companies' },
+    { label: 'Career advice', href: 'career-advice.html', k: 'advice' },
+    { label: 'Success stories', href: 'success-stories.html', k: 'stories' }
+  ].map(l => ({ ...l, on: a === l.k, off: a !== l.k }));
+  const o = !!(c.state && c.state.__hdOpen);
+  return { hdLinks: links, hdOpen: o, hdClosed: !o, hdToggle: () => c.setState({ __hdOpen: !o }) };
+}
+function __ftVals(c) {
+  const s = !!(c.state && c.state.__ftSub);
+  return { ftSubscribed: s, ftNotSubscribed: !s, ftSubscribe: e => { e.preventDefault(); c.setState({ __ftSub: true }); } };
+}
+class Component extends DCLogic {
+  renderVals() { return Object.assign(this.__pv(), __hdVals(this, 'none')); }
+  __pv() {
+    return {
+      go: e => { e.preventDefault(); window.location.href = 'jobs.html'; },
+      links: [{ label: 'Home', href: 'index.html' }, { label: 'Latest jobs', href: 'jobs.html' }, { label: 'Companies', href: 'companies.html' }, { label: 'Help centre', href: 'faq.html' }]
+    };
+  }
+}
+</script>
+</body>
+</html>

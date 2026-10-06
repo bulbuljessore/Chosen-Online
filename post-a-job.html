@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post a job | CHOSEN for Employers</title>
+<meta name="description" content="Hire from 1.2 million South African job seekers. Your first listing is free.">
+<link rel="icon" href="assets/img/logo.webp">
+<meta property="og:title" content="Post a job | CHOSEN for Employers">
+<meta property="og:description" content="Hire from 1.2 million South African job seekers. Your first listing is free.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/app.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;500;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#FAF8FB;font-family:'Public Sans',sans-serif;color:#1F1724}a{color:#D1007C;text-decoration:none}a:hover{color:#8B4DFF}input::placeholder,textarea::placeholder{color:#8A7F8E}</style>
+<script src="assets/js/motion.js"></script>
+<link rel="stylesheet" href="assets/css/responsive.css">
+</helmet>
+<div style="background:#FAF8FB; min-height:100vh">
+<div data-sticky-shadow="" style="background:#1F1724; color:#fff; font-family:'Public Sans',sans-serif; position:sticky; top:0; z-index:40; border-bottom:1px solid rgba(255,255,255,.06); transition:box-shadow .3s">
+<div style="max-width:1240px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; gap:36px; box-sizing:content-box">
+<a href="index.html" style="display:flex; transition:transform .3s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><img src="assets/img/logo.webp" alt="CHOSEN" data-m="logo" style="height:42px"></a>
+<nav data-m="hide-tab" style="display:flex; gap:30px; font-size:15px; flex:1">
+<sc-for list="{{ hdLinks }}" as="l" hint-placeholder-count="3">
+<sc-if value="{{ l.on }}" hint-placeholder-val="{{ false }}"><a href="{{ l.href }}" style="white-space:nowrap; color:#FFFFFF; padding:8px 0; background-image:linear-gradient(#FF0098,#FF0098); background-repeat:no-repeat; background-position:0 100%; background-size:100% 2px">{{ l.label }}</a></sc-if>
+<sc-if value="{{ l.off }}" hint-placeholder-val="{{ true }}"><a href="{{ l.href }}" style="white-space:nowrap; color:#CFC6D2; padding:8px 0; background-image:linear-gradient(#FF0098,#FF0098); background-repeat:no-repeat; background-position:0 100%; background-size:0% 2px; transition:background-size .35s cubic-bezier(.2,.7,.2,1), color .2s" style-hover="color:#FFFFFF; background-size:100% 2px">{{ l.label }}</a></sc-if>
+</sc-for>
+</nav>
+<span data-m="show-tab" style="display:none; flex:1"></span>
+<a data-m="hide-tab" href="post-a-job.html" style="white-space:nowrap; font-size:14px; color:#CFC6D2; transition:color .2s" style-hover="color:#FFFFFF">For employers</a>
+<a data-m="hide-tab" href="sign-in.html" style="white-space:nowrap; font-size:15px; font-weight:600; color:#FFFFFF; padding:10px 6px; transition:color .2s" style-hover="color:#FF6BC1">Sign in</a>
+<a href="profile.html" style="white-space:nowrap; font-size:15px; font-weight:600; background:#FF0098; color:#FFFFFF; padding:11px 20px; border-radius:999px; display:flex; align-items:center; gap:8px; transition:transform .25s cubic-bezier(.2,.7,.2,1), background .2s, box-shadow .25s" style-hover="background:#FF3DB0; transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,0,152,.35)" style-active="transform:scale(.97)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4 M6 10l6-6 6 6 M4 20h16"></path></svg>Upload CV</a>
+<button data-m="show-tab" onClick="{{ hdToggle }}" aria-label="Menu" style="display:none; flex:none; width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.18); background:transparent; color:#fff; align-items:center; justify-content:center; cursor:pointer; transition:background .2s" style-hover="background:rgba(255,255,255,.08)"><sc-if value="{{ hdOpen }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12 M18 6L6 18"></path></svg></sc-if><sc-if value="{{ hdClosed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16 M4 12h16 M4 17h16"></path></svg></sc-if></button>
+</div>
+<sc-if value="{{ hdOpen }}" hint-placeholder-val="{{ false }}"><div data-m="show-tab" data-reveal="" style="display:none; position:absolute; left:0; right:0; top:100%; background:#1F1724; border-top:1px solid rgba(255,255,255,.08); flex-direction:column; padding:8px 20px 24px; box-shadow:0 20px 40px rgba(0,0,0,.35)">
+<sc-for list="{{ hdLinks }}" as="l" hint-placeholder-count="4"><a href="{{ l.href }}" style="color:#FFFFFF; font-size:18px; font-weight:600; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; transition:color .2s, padding .25s" style-hover="color:#FF6BC1; padding-left:10px">{{ l.label }}<span style="color:#FF0098">→</span></a></sc-for>
+<a href="post-a-job.html" style="color:#CFC6D2; font-size:16px; padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.08)">For employers</a>
+<a href="sign-in.html" style="margin-top:16px; text-align:center; color:#FFFFFF; font-weight:600; font-size:16px; padding:14px; border-radius:999px; border:1px solid rgba(255,255,255,.25)">Sign in</a>
+</div></sc-if>
+</div>
+<div style="background:radial-gradient(700px 400px at 90% 30%, rgba(139,77,255,.25), transparent 60%), #1F1724; color:#fff">
+<div style="max-width:1240px; margin:0 auto; padding:56px 24px 80px; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:56px; align-items:center">
+<div data-reveal="" data-stagger="" style="display:flex; flex-direction:column; gap:22px">
+<span style="font:500 12px 'IBM Plex Mono',monospace; color:#FF6BC1; letter-spacing:.08em; text-transform:uppercase">For employers</span>
+<h1 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:300; font-size:64px; letter-spacing:-.035em; line-height:1">Hire from 1.2 million <span style="font-weight:700; color:#FF0098">South African job seekers.</span></h1>
+<p style="margin:0; font-size:18px; color:#CFC6D2; line-height:1.55; max-width:520px">Post a job in five minutes. Your first listing is free for 30 days, and most employers get their first applicant within 24 hours.</p>
+<div style="display:flex; gap:10px"><a href="#post" style="background:#FF0098; color:#FFFFFF; font-weight:600; padding:15px 26px; border-radius:999px; transition:background .2s, transform .2s" style-hover="background:#FF3DB0; transform:translateY(-2px); color:#FFFFFF">Post a job free</a><a href="#pricing" style="border:1px solid rgba(255,255,255,.25); color:#fff; font-weight:600; padding:15px 26px; border-radius:999px; transition:border-color .2s" style-hover="border-color:#fff; color:#fff">See pricing</a></div>
+</div>
+<div data-reveal="150" style="position:relative; height:440px">
+<div data-zoom="" style="position:absolute; inset:0 0 0 12%; border-radius:28px; overflow:hidden"><img src="https://images.unsplash.com/photo-1666866834805-8cc91d4774ac?auto=format&fit=crop&w=900&q=70" alt="Hiring manager" style="width:100%; height:100%; object-fit:cover"></div>
+<div data-float="10" style="position:absolute; left:0; bottom:40px; background:#fff; color:#1F1724; border-radius:18px; padding:16px 18px; display:flex; flex-direction:column; gap:10px; width:240px; box-shadow:0 20px 44px rgba(0,0,0,.3)"><span style="font-size:13px; color:#6B6070">Applicants this week</span><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:32px">47</span><div style="display:flex; align-items:flex-end; gap:5px; height:40px"><span style="flex:1; height:30%; background:#F1EAFF; border-radius:4px"></span><span style="flex:1; height:50%; background:#F1EAFF; border-radius:4px"></span><span style="flex:1; height:40%; background:#F1EAFF; border-radius:4px"></span><span style="flex:1; height:70%; background:#E2D3FF; border-radius:4px"></span><span style="flex:1; height:60%; background:#E2D3FF; border-radius:4px"></span><span style="flex:1; height:100%; background:#D1007C; border-radius:4px"></span></div></div>
+</div>
+</div>
+</div>
+<div id="post" style="max-width:1240px; margin:0 auto; padding:80px 24px 0; display:flex; flex-direction:column; gap:28px">
+<div data-reveal="" style="display:flex; flex-direction:column; gap:8px"><span style="font:500 12px 'IBM Plex Mono',monospace; color:#A8005F; letter-spacing:.08em; text-transform:uppercase">Post a job</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:44px; letter-spacing:-.025em">Create your listing</h2></div>
+<div style="display:grid; grid-template-columns:minmax(0,1fr) 420px; gap:28px; align-items:start">
+<div data-reveal="" style="background:#fff; border:1px solid #EEE8F0; border-radius:28px; padding:32px; display:flex; flex-direction:column; gap:26px">
+<div data-mk="" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px">
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="3"><button onClick="{{ s.go }}" style="border:0; background:none; cursor:pointer; text-align:left; display:flex; flex-direction:column; gap:10px; padding:0; font:inherit"><span style="height:6px; border-radius:99px; transition:background .3s; background:{{ s.bar }}"></span><span style="font-size:14px; font-weight:600; color:{{ s.color }}">{{ s.n }}. {{ s.label }}</span></button></sc-for>
+</div>
+<sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}"><div style="display:flex; flex-direction:column; gap:16px">
+<label style="display:flex; flex-direction:column; gap:8px; font-size:14px; font-weight:600">Job title<input value="{{ title }}" onChange="{{ setTitle }}" placeholder="e.g. Junior Data Analyst" style="font:15px 'Public Sans',sans-serif; padding:14px 16px; border:1px solid #E2D9E6; border-radius:14px; outline:none; transition:border-color .2s, box-shadow .2s" style-focus="border-color:#8B4DFF; box-shadow:0 0 0 4px #F1EAFF"></label>
+<div style="display:flex; flex-direction:column; gap:8px"><span style="font-size:14px; font-weight:600">Job type</span><div style="display:flex; gap:8px; flex-wrap:wrap"><sc-for list="{{ types }}" as="t" hint-placeholder-count="4">
+<sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}"><button style="border:1px solid #1F1724; background:#1F1724; color:#fff; font:500 14px 'Public Sans',sans-serif; padding:10px 16px; border-radius:999px; cursor:pointer">{{ t.label }}</button></sc-if>
+<sc-if value="{{ t.off }}" hint-placeholder-val="{{ true }}"><button onClick="{{ t.pick }}" style="border:1px solid #E2D9E6; background:#fff; color:#1F1724; font:500 14px 'Public Sans',sans-serif; padding:10px 16px; border-radius:999px; cursor:pointer; transition:border-color .2s" style-hover="border-color:#1F1724">{{ t.label }}</button></sc-if>
+</sc-for></div></div>
+<label style="display:flex; flex-direction:column; gap:8px; font-size:14px; font-weight:600">Description<textarea rows="6" placeholder="What will this person do? What do they need?" style="font:15px/1.55 'Public Sans',sans-serif; padding:14px 16px; border:1px solid #E2D9E6; border-radius:14px; outline:none; resize:none; transition:border-color .2s, box-shadow .2s" style-focus="border-color:#8B4DFF; box-shadow:0 0 0 4px #F1EAFF"></textarea></label>
+</div></sc-if>
+<sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}"><div style="display:flex; flex-direction:column; gap:16px">
+<label style="display:flex; flex-direction:column; gap:8px; font-size:14px; font-weight:600">Location<input value="{{ loc }}" onChange="{{ setLoc }}" placeholder="e.g. Sandton, Gauteng" style="font:15px 'Public Sans',sans-serif; padding:14px 16px; border:1px solid #E2D9E6; border-radius:14px; outline:none; transition:border-color .2s, box-shadow .2s" style-focus="border-color:#8B4DFF; box-shadow:0 0 0 4px #F1EAFF"></label>
+<div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px"><label style="display:flex; flex-direction:column; gap:8px; font-size:14px; font-weight:600">Salary from (R pm)<input value="{{ min }}" onChange="{{ setMin }}" inputMode="numeric" style="font:15px 'Public Sans',sans-serif; padding:14px 16px; border:1px solid #E2D9E6; border-radius:14px; outline:none" style-focus="border-color:#8B4DFF"></label><label style="display:flex; flex-direction:column; gap:8px; font-size:14px; font-weight:600">Salary to (R pm)<input value="{{ max }}" onChange="{{ setMax }}" inputMode="numeric" style="font:15px 'Public Sans',sans-serif; padding:14px 16px; border:1px solid #E2D9E6; border-radius:14px; outline:none" style-focus="border-color:#8B4DFF"></label></div>
+<span style="font-size:14px; color:#6B6070; background:#FAF8FB; border-radius:12px; padding:12px 14px">Listings with a salary get 3× more applicants. Every job on CHOSEN must show pay.</span>
+</div></sc-if>
+<sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}"><div style="display:flex; flex-direction:column; gap:14px">
+<sc-if value="{{ notPosted }}" hint-placeholder-val="{{ true }}"><div style="display:flex; flex-direction:column; gap:14px"><span style="font-size:16px; line-height:1.6; color:#3A3040">Check the preview on the right. When you post, we verify your company within one working day and your job goes live straight after.</span><label style="display:flex; gap:10px; align-items:center; font-size:15px"><input type="checkbox" defaultChecked style="width:18px; height:18px; accent-color:#D1007C">Feature this job on the homepage (+R 450)</label></div></sc-if>
+<sc-if value="{{ posted }}" hint-placeholder-val="{{ false }}"><div data-pop="" style="display:flex; gap:16px; align-items:center; background:#F2FBF6; border:1px solid #CDEFDD; border-radius:18px; padding:20px"><span style="width:52px; height:52px; border-radius:50%; background:#E3FAEF; color:#0E8A55; display:grid; place-items:center; font-size:24px; font-weight:700">✓</span><div style="display:flex; flex-direction:column; gap:2px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:20px">Job submitted</span><span style="font-size:14px; color:#0E6B43">We’ll email you as soon as it’s live.</span></div></div></sc-if>
+</div></sc-if>
+<div style="display:flex; justify-content:space-between; border-top:1px solid #F3EEF4; padding-top:20px">
+<button onClick="{{ back }}" style="border:1px solid #E2D9E6; background:#fff; font:600 15px 'Public Sans',sans-serif; padding:13px 22px; border-radius:999px; cursor:pointer; color:#1F1724; visibility:{{ backVis }}">← Back</button>
+<button onClick="{{ next }}" style="background:#D1007C; color:#fff; border:0; font:600 15px 'Public Sans',sans-serif; padding:13px 26px; border-radius:999px; cursor:pointer; transition:background .2s, transform .2s" style-hover="background:#A8005F; transform:translateY(-2px)" style-active="transform:scale(.97)">{{ nextLabel }}</button>
+</div>
+</div>
+<div data-reveal="120" style="position:sticky; top:100px; display:flex; flex-direction:column; gap:10px">
+<span style="font:500 12px 'IBM Plex Mono',monospace; color:#6B6070; letter-spacing:.08em; text-transform:uppercase">Live preview</span>
+<div style="background:#fff; border:1px solid #EEE8F0; border-radius:22px; padding:22px; display:flex; flex-direction:column; gap:14px; box-shadow:0 16px 40px rgba(31,23,36,.08)">
+<div style="display:flex; gap:14px; align-items:center"><span style="width:52px; height:52px; border-radius:14px; background:#F1EAFF; color:#5B2FBF; display:grid; place-items:center; font-family:'Urbanist',sans-serif; font-weight:700">YC</span><div style="display:flex; flex-direction:column; gap:2px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:20px">{{ pTitle }}</span><span style="font-size:14px; color:#6B6070">Your Company · {{ pLoc }}</span></div></div>
+<div style="display:flex; gap:8px"><span style="font-size:13px; background:#F1EAFF; color:#5B2FBF; padding:5px 10px; border-radius:999px; font-weight:500">{{ type }}</span><span style="font-size:13px; background:#E3FAEF; color:#0E8A55; padding:5px 10px; border-radius:999px; font-weight:500">New</span></div>
+<span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:20px; color:#A8005F">{{ pPay }}</span>
+</div>
+<span style="font-size:13px; color:#6B6070">This is how your job appears in search results.</span>
+</div>
+</div>
+</div>
+<div id="pricing" style="max-width:1240px; margin:0 auto; padding:96px 24px; display:flex; flex-direction:column; gap:28px">
+<div data-reveal="" style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap"><div style="display:flex; flex-direction:column; gap:8px"><span style="font:500 12px 'IBM Plex Mono',monospace; color:#A8005F; letter-spacing:.08em; text-transform:uppercase">Pricing</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:700; font-size:44px; letter-spacing:-.025em">Simple plans, prices in rand</h2></div>
+<div style="display:flex; background:#fff; border:1px solid #EEE8F0; padding:5px; border-radius:999px"><sc-for list="{{ bill }}" as="b" hint-placeholder-count="2"><sc-if value="{{ b.on }}" hint-placeholder-val="{{ false }}"><button style="border:0; background:#1F1724; color:#fff; font:600 14px 'Public Sans',sans-serif; padding:9px 16px; border-radius:999px; cursor:pointer">{{ b.label }}</button></sc-if><sc-if value="{{ b.off }}" hint-placeholder-val="{{ true }}"><button onClick="{{ b.pick }}" style="border:0; background:transparent; color:#6B6070; font:500 14px 'Public Sans',sans-serif; padding:9px 16px; border-radius:999px; cursor:pointer">{{ b.label }}</button></sc-if></sc-for></div></div>
+<div data-reveal="" data-stagger="" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px">
+<sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+<div style="border-radius:26px; padding:30px; display:flex; flex-direction:column; gap:18px; border:1px solid {{ p.border }}; background:{{ p.bg }}; color:{{ p.fg }}; transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s" style-hover="transform:translateY(-5px); box-shadow:0 24px 50px rgba(31,23,36,.14)">
+<div style="display:flex; justify-content:space-between; align-items:center"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:22px">{{ p.name }}</span><sc-if value="{{ p.pop }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px; font-weight:600; background:#FF0098; color:#FFFFFF; padding:5px 10px; border-radius:999px">Most popular</span></sc-if></div>
+<div style="display:flex; align-items:baseline; gap:6px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:48px; letter-spacing:-.03em">{{ p.price }}</span><span style="font-size:14px; opacity:.7">{{ p.unit }}</span></div>
+<div style="display:flex; flex-direction:column; gap:10px; font-size:15px"><sc-for list="{{ p.items }}" as="i" hint-placeholder-count="4"><span style="display:flex; gap:10px"><span style="color:#FF0098; font-weight:700">✓</span>{{ i }}</span></sc-for></div>
+<a href="#post" style="margin-top:auto; text-align:center; font-weight:600; padding:14px; border-radius:999px; background:#D1007C; color:#fff; transition:background .2s" style-hover="background:#A8005F; color:#fff">{{ p.cta }}</a>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="background:#1F1724; color:#F5F0F4; font-family:'Public Sans',sans-serif; overflow:hidden">
+<div style="max-width:1240px; margin:0 auto; padding:72px 24px 0; display:flex; flex-direction:column; gap:48px; box-sizing:content-box">
+<div style="display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:end; padding-bottom:48px; border-bottom:1px solid #352C3A">
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-size:13px; font-weight:600; color:#FF0098; letter-spacing:.08em; text-transform:uppercase">Job alerts</span><h2 style="margin:0; font-family:'Urbanist',sans-serif; font-weight:300; font-size:44px; line-height:1.05; letter-spacing:-.02em">Get new jobs in your inbox <span style="font-weight:700">before anyone else.</span></h2></div>
+<div style="display:flex; flex-direction:column; gap:10px">
+<sc-if value="{{ ftSubscribed }}" hint-placeholder-val="{{ false }}"><div style="background:#2A2230; border:1px solid #3A3240; border-radius:999px; padding:16px 22px; font-size:15px; color:#F5F0F4">You’re subscribed. Watch your inbox for new jobs.</div></sc-if>
+<sc-if value="{{ ftNotSubscribed }}" hint-placeholder-val="{{ true }}"><form onSubmit="{{ ftSubscribe }}" style="display:flex; gap:8px; background:#2A2230; border:1px solid #3A3240; border-radius:999px; padding:6px 6px 6px 22px; align-items:center"><input type="email" required placeholder="Your email address" style="flex:1; background:transparent; border:0; outline:none; color:#F5F0F4; font:15px 'Public Sans',sans-serif"><button type="submit" style="background:#FF0098; color:#FFFFFF; font:600 15px 'Public Sans',sans-serif; padding:12px 24px; border-radius:999px; border:0; cursor:pointer; transition:background .2s, transform .2s" style-hover="background:#FF3DB0" style-active="transform:scale(.96)">Subscribe</button></form></sc-if>
+<span style="font-size:13px; color:#A79DAA; padding-left:22px">Weekly, no spam. Unsubscribe anytime.</span></div>
+</div>
+<div data-reveal="" data-stagger="" style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1.2fr; gap:32px; font-size:14px">
+<div style="display:flex; flex-direction:column; gap:16px"><a href="index.html" style="display:flex"><img src="assets/img/logo.webp" alt="CHOSEN" style="height:48px"></a><span style="color:#B9AFBC; line-height:1.6; max-width:260px">South Africa’s job site for job seekers. Verified employers and real salaries.</span>
+<div style="display:flex; gap:8px"><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"></path></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22z"></path></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></span><span style="width:38px; height:38px; border-radius:50%; border:1px solid #3A3240; display:grid; place-items:center; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s, border-color .2s, transform .25s, color .2s" style-hover="background:#FF0098; border-color:#FF0098; color:#FFFFFF; transform:translateY(-3px)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path></svg></span></div></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Job seekers</span><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Find jobs</a><a href="profile.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Upload CV</a><a href="dashboard.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Job alerts</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Graduate jobs</a><a href="career-advice.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Career advice</a></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Jobs by city</span><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Johannesburg</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Cape Town</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Durban</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Pretoria</a><a href="jobs.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Gqeberha</a></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Company</span><a href="about.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">About us</a><a href="post-a-job.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Post a job</a><a href="companies.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Companies</a><a href="success-stories.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Success stories</a><a href="faq.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">FAQ</a><a href="about.html" style="color:#B9AFBC; transition:color .2s, transform .25s; width:fit-content" style-hover="color:#FFFFFF; transform:translateX(4px)">Contact</a></div>
+<div style="display:flex; flex-direction:column; gap:12px"><span style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:16px">Get in touch</span><span style="color:#B9AFBC">hello@chosen.co.za</span><span style="color:#B9AFBC">+27 10 000 0000</span><span style="color:#B9AFBC; line-height:1.6">Sandton, Johannesburg<br>Gauteng, South Africa</span>
+<div style="display:flex; flex-direction:column; align-items:flex-start; gap:8px; padding-top:6px"><span style="display:flex; align-items:center; gap:10px; white-space:nowrap; min-width:156px; box-sizing:border-box; border:1px solid #3A3240; background:#2A2230; color:#F5F0F4; padding:7px 12px; border-radius:10px; cursor:pointer; transition:border-color .2s, transform .25s" style-hover="border-color:#FF0098; transform:translateY(-2px)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"></path></svg><span style="display:flex; flex-direction:column"><span style="font-size:10px; color:#A79DAA">Download on the</span><span style="font-weight:600; font-size:13px">App Store</span></span></span><span style="display:flex; align-items:center; gap:10px; white-space:nowrap; min-width:156px; box-sizing:border-box; border:1px solid #3A3240; background:#2A2230; color:#F5F0F4; padding:7px 12px; border-radius:10px; cursor:pointer; transition:border-color .2s, transform .25s" style-hover="border-color:#FF0098; transform:translateY(-2px)"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#00D7FE" d="M1.34.92a1.5 1.5 0 0 0-.12.57v21.02c0 .22.05.42.13.6l11.15-11.09z"></path><path fill="#FFCE00" d="M22.02 13.3l-3.92 2.22-3.51-3.5 3.54-3.52 3.89 2.2a1.49 1.49 0 0 1 0 2.6z"></path><path fill="#00F076" d="M13.54 10.99l3.26-3.24L3.45.2a1.47 1.47 0 0 0-.95-.18z"></path><path fill="#FF3A44" d="M13.54 13.06l-11 10.93c.3.04.61-.02.91-.18l13.32-7.54z"></path></svg><span style="display:flex; flex-direction:column"><span style="font-size:10px; color:#A79DAA">Get it on</span><span style="font-weight:600; font-size:13px">Google Play</span></span></span></div></div>
+</div>
+<div style="display:flex; justify-content:space-between; align-items:center; gap:24px; padding:20px 0; border-top:1px solid #352C3A; font-size:13px; color:#A79DAA"><span>© 2026 CHOSEN. All rights reserved.</span><div style="display:flex; gap:20px; flex:none; white-space:nowrap"><a href="faq.html" style="color:#A79DAA" style-hover="color:#FFFFFF">FAQ</a><span>Privacy policy</span><span>POPIA</span><span>Terms of use</span><span>Cookies</span></div></div>
+<div data-reveal="" style="font-family:'Urbanist',sans-serif; font-weight:700; font-size:290px; line-height:.72; letter-spacing:-.04em; text-align:center; background:linear-gradient(90deg,#FF0098,#8B4DFF); -webkit-background-clip:text; background-clip:text; color:transparent; opacity:.9; margin:0 -20px -10px">CHOSEN</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+function __hdVals(c, a) {
+  const links = [
+    { label: 'Find jobs', href: 'jobs.html', k: 'jobs' },
+    { label: 'Companies', href: 'companies.html', k: 'companies' },
+    { label: 'Career advice', href: 'career-advice.html', k: 'advice' },
+    { label: 'Success stories', href: 'success-stories.html', k: 'stories' }
+  ].map(l => ({ ...l, on: a === l.k, off: a !== l.k }));
+  const o = !!(c.state && c.state.__hdOpen);
+  return { hdLinks: links, hdOpen: o, hdClosed: !o, hdToggle: () => c.setState({ __hdOpen: !o }) };
+}
+function __ftVals(c) {
+  const s = !!(c.state && c.state.__ftSub);
+  return { ftSubscribed: s, ftNotSubscribed: !s, ftSubscribe: e => { e.preventDefault(); c.setState({ __ftSub: true }); } };
+}
+class Component extends DCLogic {
+  state = { step: 1, title: '', type: 'Full-time', loc: '', min: '', max: '', posted: false, annual: false };
+  renderVals() { return Object.assign(this.__pv(), __hdVals(this, 'none'), __ftVals(this)); }
+  __pv() {
+    const s = this.state, fmt = v => v ? 'R ' + (+String(v).replace(/\D/g, '')).toLocaleString('en-ZA').replace(/,/g, ' ') : '';
+    const pay = s.min && s.max ? `${fmt(s.min)} – ${fmt(s.max)} pm` : s.min ? `${fmt(s.min)} pm` : 'Salary will show here';
+    const a = s.annual;
+    return {
+      steps: ['Job details', 'Salary & location', 'Review & post'].map((label, i) => ({ n: i + 1, label, bar: i + 1 <= s.step ? '#D1007C' : '#EEE8F0', color: i + 1 <= s.step ? '#1F1724' : '#8A7F8E', go: () => this.setState({ step: i + 1 }) })),
+      s1: s.step === 1, s2: s.step === 2, s3: s.step === 3,
+      title: s.title, setTitle: e => this.setState({ title: e.target.value }),
+      types: ['Full-time', 'Part-time', 'Contract', 'Graduate'].map(t => ({ label: t, on: s.type === t, off: s.type !== t, pick: () => this.setState({ type: t }) })),
+      type: s.type, loc: s.loc, setLoc: e => this.setState({ loc: e.target.value }),
+      min: s.min, max: s.max, setMin: e => this.setState({ min: e.target.value }), setMax: e => this.setState({ max: e.target.value }),
+      pTitle: s.title || 'Your job title', pLoc: s.loc || 'Location', pPay: pay,
+      posted: s.posted, notPosted: !s.posted,
+      backVis: s.step > 1 ? 'visible' : 'hidden', back: () => this.setState({ step: Math.max(1, s.step - 1) }),
+      nextLabel: s.step < 3 ? 'Continue →' : (s.posted ? 'Post another job' : 'Post job'),
+      next: () => s.step < 3 ? this.setState({ step: s.step + 1 }) : (s.posted ? this.setState({ step: 1, posted: false, title: '', loc: '', min: '', max: '' }) : this.setState({ posted: true })),
+      bill: [['Per listing', false], ['Annual', true]].map(([label, v]) => ({ label, on: a === v, off: a !== v, pick: () => this.setState({ annual: v }) })),
+      plans: [
+        { name: 'Starter', price: 'Free', unit: 'first 30 days', items: ['1 active job', 'Salary shown to candidates', 'Applicant tracking', 'Email support'], cta: 'Start free', pop: false },
+        { name: 'Growth', price: a ? 'R 11 900' : 'R 1 450', unit: a ? 'per year' : 'per listing', items: ['Up to 10 active jobs', 'Featured on homepage', 'Company profile page', 'Priority support'], cta: 'Choose Growth', pop: true },
+        { name: 'Recruiter', price: a ? 'R 34 900' : 'R 3 900', unit: a ? 'per year' : 'per month', items: ['Unlimited jobs', 'Search the CV database', 'Invite candidates to apply', 'Dedicated account manager'], cta: 'Talk to sales', pop: false }
+      ].map(p => ({ ...p, bg: p.pop ? '#1F1724' : '#FFFFFF', fg: p.pop ? '#FFFFFF' : '#1F1724', border: p.pop ? '#1F1724' : '#EEE8F0' }))
+    };
+  }
+}
+</script>
+</body>
+</html>
